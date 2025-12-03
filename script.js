@@ -139,7 +139,7 @@ window.addEventListener('resize', function(){ canvas.width = innerWidth; canvas.
 init(); animate();
 
 /* =========================================
-   5. ИСПРАВЛЕННЫЙ МАТРИЧНЫЙ ВЗРЫВ
+   5. МАТРИЧНЫЙ ВЗРЫВ
    ========================================= */
 document.addEventListener('click', function(e) {
     // Передаем координаты клика (X и Y относительно окна браузера)
