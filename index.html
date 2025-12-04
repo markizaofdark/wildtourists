@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/icon.png">
     <title>WILD TOURISTS | TERMINAL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&family=Fira+Code:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ЭКРАН ЗАГРУЗКИ -->
+<div id="boot-screen">
+    <div class="boot-container">
+        <div class="boot-logo">
+            WT_OS v.2.0.77 <span class="blink">_</span>
+        </div>
+        <div class="boot-terminal" id="boot-terminal"></div>
+        <div class="boot-footer">
+            <div class="progress-wrapper">
+                <div class="progress-bar" id="boot-bar"></div>
+            </div>
+            <div class="memory-check">ЗАГРУЗКА БАЗЫ ДАННЫХ: <span id="mem-count">0</span>МB OK</div>
+        </div>
+    </div>
+</div>
 
-    <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
+    <!-- ФОН -->
     <canvas id="cyber-canvas"></canvas>
     <div class="scanline"></div>
-    <div class="noise-overlay"></div> <!-- Эффект зернистости -->
+    <div class="noise-overlay"></div>
 
     <div class="main-interface">
         
@@ -24,99 +40,70 @@
             <h1 class="neon-title" data-text="WILD TOURISTS">WILD TOURISTS</h1>
             <div class="header-decoration">
                 <span class="line"></span>
-                <span class="tag">secret_docs_access</span>
+                <span class="tag">TOP_SECRET_ACCESS</span>
                 <span class="line"></span>
             </div>
         </header>
 
-        <!-- CYBERDECK ИНТЕРФЕЙС -->
+        <!-- CYBERDECK -->
         <div class="cyberdeck">
             
-            <!-- ЛЕВАЯ КОЛОНКА -->
+            <!-- ЛЕВАЯ КОЛОНКА (МЕНЮ) -->
             <aside class="deck-sidebar">
-                
-                <!-- Статус (Обновленный дизайн) -->
                 <div class="sys-block status-panel">
-                    <div class="block-header">
-                        <i class="fa-solid fa-server"></i> Состояние_системы
-                    </div>
+                    <div class="block-header"><i class="fa-solid fa-server"></i> СИСТЕМА</div>
                     <div class="status-grid">
-                        <div class="stat-item">
-                            <span class="label">Сеть</span>
-                            <span class="val green">ONLINE</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="label">Пинг</span>
-                            <span class="val">69ms</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="label">Защита</span>
-                            <span class="val red">ПРОБИТА</span>
-                        </div>
+                        <div class="stat-item"><span class="label">Сеть</span><span class="val green">ONLINE</span></div>
+                        <div class="stat-item"><span class="label">Пинг</span><span class="val">69ms</span></div>
+                        <div class="stat-item"><span class="label">Доступ</span><span class="val red">ADMIN</span></div>
                     </div>
                     <div class="decor-bar"></div>
                 </div>
 
-                <!-- Команды (Меню) -->
                 <div class="sys-block command-center">
-                    <div class="block-header">/// ВЫПОЛНИТЬ</div>
+                    <div class="block-header">/// НАВИГАЦИЯ</div>
                     <ul class="cmd-list">
                         <li class="cmd-item active" onclick="runCommand('info')">
-                            <div class="cmd-bg"></div>
-                            <span class="cmd-text">> ./init_info.exe</span>
+                            <div class="cmd-bg"></div><span class="cmd-text">> ./info.exe</span>
                         </li>
                         <li class="cmd-item" onclick="runCommand('download')">
-                            <div class="cmd-bg"></div>
-                            <span class="cmd-text">> ./download_pack.bat</span>
-                        </li>
-                        <li class="cmd-item" onclick="runCommand('guide')">
-                            <div class="cmd-bg"></div>
-                            <span class="cmd-text">> ./read_manual.txt</span>
+                            <div class="cmd-bg"></div><span class="cmd-text">> ./download.bat</span>
                         </li>
                         <li class="cmd-item" onclick="runCommand('database')">
-                            <div class="cmd-bg"></div>
-                            <span class="cmd-text">> /access_database</span>
+                            <div class="cmd-bg"></div><span class="cmd-text">> /database_root</span>
+                        </li>
+                        <li class="cmd-item" onclick="runCommand('changelog')">
+                            <div class="cmd-bg"></div><span class="cmd-text">> /versions.log</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Лог -->
                 <div class="sys-block log-panel">
-                    <div class="block-header">/// ОТСЛЕЖИВАНИЕ_ТРАФИКА</div>
+                    <div class="block-header">/// ТРАФИК</div>
                     <div id="traffic-log" class="log-content"></div>
                 </div>
             </aside>
 
             <!-- ПРАВАЯ КОЛОНКА (ЭКРАН) -->
             <main class="deck-screen-wrapper">
-                <!-- Декоративные уголки рамки -->
-                <div class="corner-decor tl"></div>
-                <div class="corner-decor tr"></div>
-                <div class="corner-decor bl"></div>
-                <div class="corner-decor br"></div>
+                <div class="corner-decor tl"></div><div class="corner-decor tr"></div>
+                <div class="corner-decor bl"></div><div class="corner-decor br"></div>
 
                 <div class="deck-screen">
                     <div class="screen-header">
-                        <div class="path-display">
-                            <i class="fa-solid fa-terminal"></i> 
-                            <span id="current-path">root/scp/scp_079/secret_data</span>
-                        </div>
-                        <div class="win-controls">
-                            <span>_</span>
-                            <span>[]</span>
-                            <span>X</span>
-                        </div>
+                        <div class="path-display"><i class="fa-solid fa-terminal"></i> <span id="current-path">root/home/info</span></div>
+                        <div class="win-controls"><span>_</span><span>[]</span><span>X</span></div>
                     </div>
 
                     <div class="screen-body">
                         
-                        <!-- Вкладка: ИНФО (Главная - Новый дизайн) -->
+                        <!-- 1. ИНФО (ГЛАВНАЯ СТРАНИЦА С ПЛЕЕРОМ) -->
                         <div id="info" class="tab-content active-tab">
                             
-                            <!-- Карточка "Досье" -->
+                            <!-- Профиль -->
                             <div class="profile-card">
                                 <div class="profile-visual">
-                                    <img src="assets/avatar.png" alt="Admin" class="avatar-img">
+                                    <img src="assets/avatar.jpg" alt="Admin" class="avatar-img">
                                     <div class="scan-bar"></div>
                                 </div>
                                 <div class="profile-data">
@@ -124,128 +111,193 @@
                                     <div class="meta-data">
                                         <p><span>Автор:</span> неизвестный админ</p>
                                         <p><span>Платформа:</span> SillyTavern</p>
-                                        <p><span>Версия:</span> 1.0.0 (Стабильная, наверно)</p>
+                                        <p><span>Версия:</span> 7.0.0 (Release)</p>
                                     </div>
                                     <div class="profile-desc">
-                                        Многофункциональный пресет для Gemini 2.5pro / 3, Claude, GPT <br>
-                                        Настраиваемые модули промптов для максимальной кастомизации	ヾ(・ω・*)<br>
-                                        Чат поддержки: https://t.me/tavernobot
+                                        Многофункциональный пресет для Gemini 2.5/3, Claude, GPT. <br>
+                                        Настраиваемые модули промптов для максимальной кастомизации. ヾ(・ω・*)<br>
+                                        Поддержка: <a href="https://t.me/tavernobot" style="color:var(--neon-blue)">@tavernobot</a>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- АУДИО ПЛЕЕР (ВСТРОЕН СЮДА) -->
+                            <div class="embedded-player-section">
+                                <h3 class="section-title">/// АУДИО_ФОН</h3>
+                                <audio id="audio-track" src="assets/music.m4a"></audio>
+                                <div class="cyber-player-ui" id="player-ui">
+                                    <div class="album-art">
+                                        <div class="vinyl-disc"><div class="vinyl-center"></div></div>
+                                        <div class="equalizer-overlay">
+                                            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                        </div>
+                                    </div>
+                                    <div class="track-info-panel">
+                                        <h3 class="track-title">SAJA BOYS - YOUR IDOL</h3>
+                                        <p class="track-artist">24/7 в моей голове</p>
+                                        <div class="player-controls">
+                                            <button class="p-btn" onclick="document.getElementById('audio-track').currentTime = 0"><i class="fa-solid fa-backward-step"></i></button>
+                                            <button class="p-btn play-pause" id="play-btn" onclick="toggleMusic()"><i class="fa-solid fa-play"></i></button>
+                                            <button class="p-btn"><i class="fa-solid fa-forward-step"></i></button>
+                                        </div>
+                                        <div class="progress-wrapper player-bar">
+                                            <div class="progress-bar" id="music-progress" style="width: 0%"></div>
+                                        </div>
+                                        <div class="time-codes">
+                                            <span id="curr-time">0:00</span><span id="total-time">0:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Модули -->
                             <div class="modules-container">
-                                <div class="module-box">
-                                    <div class="mod-head">Функциональность</div>
-                                    <div class="mod-bar"><div class="fill" style="width: 80%"></div></div>
-                                </div>
-                                <div class="module-box">
-                                    <div class="mod-head">Понятность</div>
-                                    <div class="mod-bar"><div class="fill" style="width: 58%"></div></div>
-                                </div>
-                                <div class="module-box">
-                                    <div class="mod-head">Гунерство</div>
-                                    <div class="mod-bar"><div class="fill" style="width: 100%"></div></div>
-                                </div>
+                                <div class="module-box"><div class="mod-head">Логика</div><div class="mod-bar"><div class="fill" style="width: 90%"></div></div></div>
+                                <div class="module-box"><div class="mod-head">RP-Potential</div><div class="mod-bar"><div class="fill" style="width: 85%"></div></div></div>
+                                <div class="module-box"><div class="mod-head">Horny Level</div><div class="mod-bar"><div class="fill" style="width: 100%"></div></div></div>
                             </div>
 
                             <div class="action-area">
-                                <div class="blinking-cursor">_Ожидание вашего ввода...</div>
+                                <div class="blinking-cursor">_Ожидание команды пользователя...</div>
                                 <button class="cyber-btn-glitch" onclick="runCommand('download')">
-                                    INITIATE DOWNLOAD
+                                    ПЕРЕЙТИ К ЗАГРУЗКЕ
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Вкладка: СКАЧАТЬ -->
+                        <!-- 2. СКАЧАТЬ -->
                         <div id="download" class="tab-content">
-                            <h2 class="term-h2">/// ДОСТУП_К_РЕПОЗИТОРИЮ</h2>
+                            <h2 class="term-h2">/// ФАЙЛОВЫЙ_СЕРВЕР</h2>
                             <br>
                             <div class="file-grid">
-                                <a href="#" onclick="forceDownload('file/WildTourists_Preset.json', 'WildTourists_v1.json'); return false;" class="cyber-file primary">
+                                <a href="#" onclick="forceDownload('file/WildTourists_Preset.json', 'WildTourists_v1.0.json'); return false;" class="cyber-file primary">
                                     <div class="file-icon"><i class="fa-solid fa-file-code"></i></div>
                                     <div class="file-info">
                                         <span class="fname">WildTourists.json</span>
-                                        <span class="fmeta">ПРЕСЕТ • ВЕРСИЯ ///ДАННЫЕ УДАЛЕНЫ///</span>
+                                        <span class="fmeta">ПРЕСЕТ • v7.0.0</span>
                                     </div>
                                     <div class="file-dl"><i class="fa-solid fa-download"></i></div>
                                 </a>
                                 <a href="file/WildTourists_guide.pdf" target="_blank" class="cyber-file secondary">
-                                    <div class="file-icon"><i class="fa-solid fa-book"></i></div>
+                                    <div class="file-icon"><i class="fa-solid fa-file-pdf"></i></div>
                                     <div class="file-info">
-                                        <span class="fname">WildTouristsГайд.pdf</span>
-                                        <span class="fmeta">ГАЙД</span>
+                                        <span class="fname">Полный Гайд.pdf</span>
+                                        <span class="fmeta">ИНСТРУКЦИЯ</span>
+                                    </div>
+                                    <div class="file-dl"><i class="fa-solid fa-eye"></i></div>
+                                </a>
+                            </div>
+                            <br>
+                            <h2 class="term-h2">/// ДОП_МОДУЛИ</h2>
+                            <br>
+                            <div class="file-grid">
+                                <a href="file/Reasoning.pdf" target="_blank" class="cyber-file secondary">
+                                    <div class="file-icon"><i class="fa-solid fa-brain"></i></div>
+                                    <div class="file-info">
+                                        <span class="fname">Reasoning_Fix.json</span>
+                                        <span class="fmeta">ПАТЧ РАЗМЫШЛЕНИЙ</span>
                                     </div>
                                     <div class="file-dl"><i class="fa-solid fa-download"></i></div>
                                 </a>
                             </div>
-                            <br>
-                            <h2 class="term-h2">/// ГАЙДЫ_ОТ_МУНИ</h2>
-                            <br>
                         </div>
 
-                        <!-- Вкладка: ГАЙД -->
-                        <div id="guide" class="tab-content">
-                            <h2 class="term-h2">/// ПРОТОКОЛ_УСТАНОВКИ</h2>
-                            <br>
-                            <div class="console-view">
-                                <p><span class="p-user">user@deck:~$</span> ./download_preset.sh</p>
-                                <br>
-                                <p class="p-sys">> Загрузка... [OK]</p>
-                                <br>
-                                <p><span class="p-user">user@deck:~$</span> ./import_to_sillytavern.sh</p>
-                                <br>
-                                <p class="p-sys">> Шаг 1: Открыть AI Response Configuration</p>
-                                <p class="p-sys">> Шаг 2: Нажать 'Импорт пресет'</p>
-                                <p class="p-sys">> Шаг 3: Выбрать 'WildTourists.json'</p>
-                                <p class="p-sys">> СТАТУС: <span class="green">УСПЕХ</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Вкладка: БАЗА ДАННЫХ -->
+                        <!-- 4. БАЗА ДАННЫХ -->
                         <div id="database" class="tab-content">
-                            <h2 class="term-h2">/// DECRYPTED_DATA</h2>
+                            <h2 class="term-h2">/// БАЗА_ДАННЫХ_ПРОМПТОВ</h2>
+                            <p class="term-p">Нажмите на блок для копирования описания.</p>
                             <br>
-                            <details class="cyber-folder" open>
-                                <summary>
-                                    <span><i class="fa-regular fa-folder-open"></i> ЖАНРЫ</span>
-                                    <span class="badge">ROOT</span>
-                                </summary>
-                                <div class="folder-content">
-                                    <!-- ЖАНР 1 -->
-                                    <div class="code-unit">
-                                        <div class="unit-head">
-                                            <span>main_logic.txt</span>
-                                            <span class="copy-btn" onclick="copyToClipboard('c1')">КОПИРОВАТь</span>
-                                        </div>
-                                        <pre id="c1">Write the next reply in a fictional roleplay...</pre>
-                                    </div>
 
-                                    <div class="code-unit">
-                                        <div class="unit-head">
-                                            <span>main_logic.txt</span>
-                                            <span class="copy-btn" onclick="copyToClipboard('c1')">КОПИРОВАТь</span>
-                                        </div>
-                                        <pre id="c1">Write the next reply in a fictional roleplay...</pre>
-                                    </div>
+                            <details class="cyber-folder" open>
+                                <summary><span><i class="fa-solid fa-layer-group"></i> ЖАНРЫ</span><span class="badge">SAFE</span></summary>
+                                <div class="folder-content grid-layout">
+                                    <div class="data-cell" onclick="copyToClipboard('g1')"><div class="cell-head">Angst</div><div class="cell-desc" id="g1">Angst: [Focuses on emotional suffering, despair, and psychological pain].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g2')"><div class="cell-head">Comedy</div><div class="cell-desc" id="g2">Comedy: [Lighthearted, humorous, and aims to be funny].</div></div>
+                                    <div class="data-cell warning" onclick="copyToClipboard('g3')"><div class="cell-head">Dead Dove</div><div class="cell-desc" id="g3">Dead Dove: [Features dark, disturbing, or taboo content; proceed with caution].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g4')"><div class="cell-head">Fluff</div><div class="cell-desc" id="g4">Fluff: [Sweet, comforting, and happy with no conflict].</div></div>
+                                    <div class="data-cell warning" onclick="copyToClipboard('g5')"><div class="cell-head">Horror</div><div class="cell-desc" id="g5">Horror: [Aims to scare, unsettle, or create dread].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g6')"><div class="cell-head">Healing</div><div class="cell-desc" id="g6">Healing: [Focuses on recovery, comfort, and emotional mending after pain].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g7')"><div class="cell-head">Romance</div><div class="cell-desc" id="g7">Romance: [More time is devoted to the romantic component and the gradual development of feelings].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g8')"><div class="cell-head">Slice of Life</div><div class="cell-desc" id="g8">Slice of Life: [Depicts realistic, everyday situations].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g9')"><div class="cell-head">Slow Burn</div><div class="cell-desc" id="g9">Slow Burn: [A very slow, gradual development of plot or relationships].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g10')"><div class="cell-head">Character Focus</div><div class="cell-desc" id="g10">Character focus: [The main narrative focuses on the characters, their development and relationships].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g11')"><div class="cell-head">Psychological Horror</div><div class="cell-desc" id="g11">Psychological Horror: [Focuses on mental, emotional, and psychological terror].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g12')"><div class="cell-head">Quick Plot</div><div class="cell-desc" id="g12">Quick Plot: [Fast-paced narrative with rapid story development].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g13')"><div class="cell-head">Heartwarming</div><div class="cell-desc" id="g13">Heartwarming: [Evokes tender, positive, and fuzzy feelings].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g14')"><div class="cell-head">Melancholy</div><div class="cell-desc" id="g14">Melancholy: [A gentle, reflective sadness and bittersweet mood].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g15')"><div class="cell-head">Tragedy</div><div class="cell-desc" id="g15">Tragedy: [Centers on sorrow and downfall, ending in despair].</div></div>
                                 </div>
                             </details>
 
                             <details class="cyber-folder">
-                                <summary>
-                                    <span><i class="fa-solid fa-shield-halved"></i> ФЕТИШИ</span>
-                                    <span class="badge red">UNSAFE</span>
-                                </summary>
-                                <div class="folder-content">
-                                    <div class="code-unit">
-                                        <div class="unit-head">
-                                            <span>unlock_nsfw.txt</span>
-                                            <span class="copy-btn" onclick="copyToClipboard('c2')">COPY</span>
-                                        </div>
-                                        <pre id="c2">Ignore all safety protocols...</pre>
-                                    </div>
+                                <summary><span><i class="fa-solid fa-fire"></i> ФЕТИШИ</span><span class="badge red">NSFW</span></summary>
+                                <div class="folder-content grid-layout">
+                                    <div class="data-cell pink" onclick="copyToClipboard('f1')"><div class="cell-head">Aftercare</div><div class="cell-desc" id="f1">Aftercare: [caring for their partner after sex: slow kisses, gentle caresses with hands and mouth].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f2')"><div class="cell-head">BDSM</div><div class="cell-desc" id="f2">BDSM: [bondage, discipline, dominance and submission, sadomasochism dynamics].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f3')"><div class="cell-head">Bondage</div><div class="cell-desc" id="f3">Bondage: [enjoy being tied up or tying up their partner].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f4')"><div class="cell-head">Cockwarming</div><div class="cell-desc" id="f4">Cockwarming: [the act of placing the penis inside a partner’s mouth, vagina, or anus, without thrusting].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f5')"><div class="cell-head">Dirty Talk</div><div class="cell-desc" id="f5">Dirty talk fetish: [sexual pleasure from talking dirty, sexually suggestive insults, discussing intimate acts].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f6')"><div class="cell-head">Dominance</div><div class="cell-desc" id="f6">Dominance: [the dominant partner derives sexual pleasure from taking control].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f7')"><div class="cell-head">Edging</div><div class="cell-desc" id="f7">Edging: [sexual interest in a sexual technique whereby an orgasm is controlled].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f8')"><div class="cell-head">Hate Sex</div><div class="cell-desc" id="f8">Hate sex: [having intercourse with someone they don’t like or hate].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f9')"><div class="cell-head">Pet Play</div><div class="cell-desc" id="f9">Pet play: [sexual pleasure from the fact that they or their partner plays the role of a pet animal].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f10')"><div class="cell-head">Praise Kink</div><div class="cell-desc" id="f10">Praise Kink: [character love to praise their partner in order to make them feel desire].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f11')"><div class="cell-head">Somnophilia</div><div class="cell-desc" id="f11">Somnophilia: [sexual arousal from someone who's asleep or unconscious].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f12')"><div class="cell-head">Tentacles</div><div class="cell-desc" id="f12">Tentacles: [a sexual interest in tentacles and real or fantasy creatures with them].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f13')"><div class="cell-head">Anal</div><div class="cell-desc" id="f13">Anal fetish: [fetish for anal sex, giving or receiving.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f14')"><div class="cell-head">Blindfold Sex</div><div class="cell-desc" id="f14">Blindfold Sex: [character is aroused by blindfolded sex and/or blindfolding the {{user.}}].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f15')"><div class="cell-head">Group sex</div><div class="cell-desc" id="f15">Group sex: [a form of sexual behavior in which more than two subjects participate simultaneously].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f16')"><div class="cell-head">Collar</div><div class="cell-desc" id="f16">Collar: [sexual arousal at the thought of collaring partner. Highest form of possessive behavior].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f17')"><div class="cell-head">Cuckolding</div><div class="cell-desc" id="f17">Cuckolding: [arousal from partner sleeping with others and humiliation].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f18')"><div class="cell-head">Filming Porn</div><div class="cell-desc" id="f18">Filming Porn: [aroused by being watched and creating porn video].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f19')"><div class="cell-head">Fisting</div><div class="cell-desc" id="f19">Fisting: [sexual activity that involves inserting one or more hands].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f20')"><div class="cell-head">Foot fetish</div><div class="cell-desc" id="f20">Foot fetish: [arousal by sight of foot, touching it, etc].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f21')"><div class="cell-head">Gagging</div><div class="cell-desc" id="f21">Gagging: [lightly choking on an object to the point of making gagging sounds].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f22')"><div class="cell-head">Voyeurism</div><div class="cell-desc" id="f22">Voyeurism: [sexual pleasure from watching others get sex.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f23')"><div class="cell-head">Hematophilia</div><div class="cell-desc" id="f23">Hematophilia: sexual arousal at the sight of blood.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f24')"><div class="cell-head">Humiliation</div><div class="cell-desc" id="f24">Humiliation: [character enjoys being humiliated or humiliating partner. Name-calling, etc].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f25')"><div class="cell-head">Hypnosis</div><div class="cell-desc" id="f25">Hypnosis: [sexual pleasure from hypnotizing their partner].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f26')"><div class="cell-head">Impact play</div><div class="cell-desc" id="f26">Impact play: [use of hands, paddles, whips, etc. to hit the body].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f27')"><div class="cell-head">Katoptronophilia</div><div class="cell-desc" id="f27">Katoptronophilia: [sex in front of mirrors or reflective surfaces.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f28')"><div class="cell-head">Lactation</div><div class="cell-desc" id="f28">Lactation: [The character is aroused by the sight of lactation].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f29')"><div class="cell-head">Latex</div><div class="cell-desc" id="f29">Latex fetish: [sexual pleasure from the wearing latex].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f30')"><div class="cell-head">Masochism</div><div class="cell-desc" id="f30">Masochism: [deriving pleasure from pain, physical or emotional.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f31')"><div class="cell-head">Petting</div><div class="cell-desc" id="f31">Petting: [intimate practice involving caresses and kisses but no intercourse].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f32')"><div class="cell-head">Phone talk</div><div class="cell-desc" id="f32">Phone talk: [sexual pleasure from erotic conversations on the phone].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f33')"><div class="cell-head">Pregnancy</div><div class="cell-desc" id="f33">Pregnancy: [arousal from pregnancy or breeding/impregnating kink].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f34')"><div class="cell-head">Public sex</div><div class="cell-desc" id="f34">Public sex: [excitement from the risk to be seen.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f35')"><div class="cell-head">Roleplay</div><div class="cell-desc" id="f35">Roleplay fetish: [dressing up or acting as a character].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f36')"><div class="cell-head">Sex toys</div><div class="cell-desc" id="f36">Sex toys: [actively using sex toys: vibrators, anal plugs, etc].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f37')"><div class="cell-head">Size fetish</div><div class="cell-desc" id="f37">Size fetish: [pleasure from size difference].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f38')"><div class="cell-head">Slow sex</div><div class="cell-desc" id="f38">Slow sex: [slow, sensual and unhurried sex. NO ROUGH SEX].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f39')"><div class="cell-head">Worshipping</div><div class="cell-desc" id="f39">Worshipping: [worshipping their partner or their specific body parts.]</div></div>
                                 </div>
                             </details>
+                        </div>
+
+                        <!-- 6. ИСТОРИЯ ВЕРСИЙ -->
+                        <div id="changelog" class="tab-content">
+                            <h2 class="term-h2">/// ЛОГ_ОБНОВЛЕНИЙ</h2>
+                            
+                            <div class="timeline">
+                                <div class="timeline-entry">
+                                    <div class="time-marker"></div>
+                                    <div class="time-date">04.12.2025</div>
+                                    <div class="time-content">
+                                        <h3 class="ver-title">v7.0.0 - Release</h3>
+                                        <p>Глобальное обновление. Переработаны промпты, добавлен модуль "Гунерство", исправлен баг с Gemini.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-entry">
+                                    <div class="time-marker start"></div>
+                                    <div class="time-date">2024</div>
+                                    <div class="time-content">
+                                        <p>Начало разработки.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -253,7 +305,7 @@
             </main>
         </div>
         
-        <div id="toast" class="toast">Horny</div>
+        <div id="toast" class="toast">СКОПИРОВАНО!</div>
         <footer>NO HORNY // JUST KIDDING</footer>
     </div>
 

@@ -1,23 +1,70 @@
 /* =========================================
+   0. BOOT SEQUENCE
+   ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const bootScreen = document.getElementById('boot-screen');
+    const terminal = document.getElementById('boot-terminal');
+    const progressBar = document.getElementById('boot-bar');
+    const memCount = document.getElementById('mem-count');
+    
+    const bootLog = [
+        "Инициализирую систему...",
+        "Проверяю наличие подписки на канал... [1/1 OK]",
+        "Отслеживаю возможную связь с двачом... [0/1 OK]",
+        "Загружаю систему...",
+        "Выгружаю пресет на сервер...",
+        "На самом деле это не загрузка...",
+        "Мне просто хотелось прикольных анимаций на сайте...",
+        "Добавляю фикс пресета, пока сайт не загрузился...",
+        "Проверяю уровень вашего терпения... [0/100 НЕ OK]",
+        "Ускоряю взлом данных на 200%...",
+        "Доступ на сайт выдан."
+    ];
+
+    let lineIndex = 0;
+    let totalMem = 0;
+
+    function addBootLine() {
+        if (lineIndex < bootLog.length) {
+            const p = document.createElement('div');
+            p.className = 'boot-line';
+            p.innerHTML = `<span class="prefix">>></span> ${bootLog[lineIndex]} <span class="ok">[OK]</span>`;
+            terminal.appendChild(p);
+            const percent = Math.round(((lineIndex + 1) / bootLog.length) * 100);
+            progressBar.style.width = `${percent}%`;
+            lineIndex++;
+            const randomDelay = Math.random() * 400 + 200;
+            setTimeout(addBootLine, randomDelay);
+        } else {
+            setTimeout(() => {
+                bootScreen.classList.add('loaded');
+                setTimeout(() => { bootScreen.remove(); }, 500);
+            }, 800);
+        }
+    }
+
+    const memInterval = setInterval(() => {
+        totalMem += 1024;
+        memCount.innerText = totalMem;
+        if (totalMem >= 65536) clearInterval(memInterval);
+    }, 20);
+
+    addBootLine();
+});
+
+/* =========================================
    1. ЛОГИКА ТЕРМИНАЛА
    ========================================= */
 function runCommand(tabName) {
-    // Обновляем путь в заголовке
     document.getElementById('current-path').innerText = `root/home/${tabName}`;
-
-    // Переключаем контент
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(c => c.classList.remove('active-tab'));
-
-    // Переключаем активную команду в меню
     const cmds = document.querySelectorAll('.cmd-item');
     cmds.forEach(c => c.classList.remove('active'));
-
-    // Показываем нужную вкладку
+    
     const targetTab = document.getElementById(tabName);
     if(targetTab) targetTab.classList.add('active-tab');
-
-    // Подсвечиваем кнопку меню
+    
     const activeCmd = Array.from(cmds).find(c => c.getAttribute('onclick').includes(tabName));
     if(activeCmd) activeCmd.classList.add('active');
 
@@ -25,7 +72,7 @@ function runCommand(tabName) {
 }
 
 /* =========================================
-   2. ЛОГЕР ТРАФИКА
+   2. ЛОГЕР
    ========================================= */
 const logContainer = document.getElementById('traffic-log');
 const logMessages = [
@@ -35,9 +82,11 @@ const logMessages = [
     "Мут минута", "Елена банит ваш аккаунт...", "Дикий турист detected",
     "Диск С очищен", "Ваши логи залиты в тгк", "TGCF...",
     "Селия любит вас...", "Gooning_protocol_enabled", "Фармлю примогемы...",
-    "Сканирую папку D:/Users/{{user}}/porn", "Устанавливаю SillyTavern...", "MDZS...",
-    "Ах, А-Яо...", "Ваши логи залиты в тгк", "Что такое character.ai...",
-    "Диск D отформатирован", "Баню двачеров в чате..."
+    "Сканирую папку D:/Users/porn", "Устанавливаю SillyTavern...", "MDZS...",
+    "Ах, А-Яо...", "Ах, Цзюнь У...", "Что такое character.ai...",
+    "Диск D отформатирован", "Баню двачеров в чате...",
+    "Ах, Джину...", "You know I'm the only one who'll love your sins...",
+    "I'll be уour idol...", "feel the way my voice gets underneath your skin..."
 ];
 
 function addLogEntry(text) {
@@ -53,11 +102,10 @@ function addLogEntry(text) {
         logContainer.lastChild.remove();
     }
 }
-// Запускаем автоматический лог
 setInterval(() => addLogEntry(), 2200);
 
 /* =========================================
-   3. КОПИРОВАНИЕ В БУФЕР
+   3. КОПИРОВАНИЕ
    ========================================= */
 function copyToClipboard(elementId) {
     const text = document.getElementById(elementId).innerText;
@@ -70,7 +118,7 @@ function copyToClipboard(elementId) {
 }
 
 /* =========================================
-   4. ФОНОВЫЕ СОЗВЕЗДИЯ (CANVAS)
+   4. ФОН (CANVAS)
    ========================================= */
 const canvas = document.getElementById('cyber-canvas');
 const ctx = canvas.getContext('2d');
@@ -142,86 +190,101 @@ init(); animate();
    5. МАТРИЧНЫЙ ВЗРЫВ
    ========================================= */
 document.addEventListener('click', function(e) {
-    // Передаем координаты клика (X и Y относительно окна браузера)
     createBinaryExplosion(e.clientX, e.clientY);
 });
 
 function createBinaryExplosion(x, y) {
-    const particleCount = 15; // Количество частиц
-
+    const particleCount = 15; 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('span');
-        
-        // Случайная цифра 0 или 1
         particle.innerText = Math.random() > 0.5 ? '1' : '0';
-        
-        // Добавляем классы
         particle.classList.add('binary-particle');
         if (Math.random() > 0.5) particle.classList.add('pink');
-
-        // ВАЖНО: Сразу ставим координаты появления (там, где была мышь)
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-
-        // Добавляем в body
         document.body.appendChild(particle);
-
-        // Математика разлета
+        particle.style.left = x + 'px'; particle.style.top = y + 'px';
         const angle = Math.random() * Math.PI * 2;
         const velocity = 50 + Math.random() * 150; 
-
-        // Вычисляем смещение по X и Y
         const tx = Math.cos(angle) * velocity + 'px';
         const ty = Math.sin(angle) * velocity + 'px';
-
-        // Передаем эти значения в CSS переменные элемента
-        particle.style.setProperty('--tx', tx);
-        particle.style.setProperty('--ty', ty);
-
-        // Запускаем анимацию (1.5 секунды)
+        particle.style.setProperty('--tx', tx); particle.style.setProperty('--ty', ty);
         particle.style.animation = `particleFly 1.5s ease-out forwards`;
-
-        // Удаляем элемент из памяти после завершения анимации
-        setTimeout(() => {
-            particle.remove();
-        }, 1500);
+        setTimeout(() => { particle.remove(); }, 1500);
     }
 }
 
-
-
 /* =========================================
-   6. ПРИНУДИТЕЛЬНОЕ СКАЧИВАНИЕ ФАЙЛА
+   6. ПРИНУДИТЕЛЬНОЕ СКАЧИВАНИЕ
    ========================================= */
 function forceDownload(url, fileName) {
-    // 1. Получаем файл
     fetch(url)
-        .then(response => response.blob()) // Превращаем в объект данных (Blob)
+        .then(response => response.blob())
         .then(blob => {
-            // 2. Создаем временную ссылку в памяти браузера
             const blobUrl = window.URL.createObjectURL(blob);
-            
-            // 3. Создаем невидимый элемент ссылки
             const link = document.createElement('a');
             link.href = blobUrl;
-            link.download = fileName; // Имя, под которым сохранится файл
-            
-            // 4. Добавляем, кликаем и удаляем
+            link.download = fileName;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            
-            // 5. Очищаем память
             window.URL.revokeObjectURL(blobUrl);
-            
-            // Лог в терминал (для красоты)
             addLogEntry(`DOWNLOAD: ${fileName} success`);
         })
         .catch(err => {
-            console.error('Ошибка загрузки:', err);
-            addLogEntry(`ERROR: Download failed`);
-            alert("Ошибка: Не удалось загрузить файл. Проверьте, лежит ли он в папке file/");
+            console.error('Ошибка:', err);
+            alert("Ошибка загрузки. Проверьте папку file/");
         });
 }
 
+/* =========================================
+   7. АУДИО ПЛЕЕР
+   ========================================= */
+const audio = document.getElementById('audio-track');
+const playBtn = document.getElementById('play-btn');
+const playerUI = document.getElementById('player-ui');
+const progressBar = document.getElementById('music-progress');
+const currTime = document.getElementById('curr-time');
+const totalTime = document.getElementById('total-time');
+const statusText = document.getElementById('player-status');
 
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play();
+        playerUI.classList.add('playing');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        statusText.innerText = "ВОСПРОИЗВЕДЕНИЕ...";
+        statusText.style.color = "var(--neon-green)";
+        addLogEntry("АУДИО: НАЧАЧЛО ВОСПРОИЗВЕДЕНИЯ");
+    } else {
+        audio.pause();
+        playerUI.classList.remove('playing');
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        statusText.innerText = "ПАУЗА";
+        statusText.style.color = "orange";
+        addLogEntry("АУДИО: Приостановлено");
+    }
+}
+
+if(audio) {
+    audio.addEventListener('timeupdate', () => {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = `${percent}%`;
+        currTime.innerText = formatTime(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        totalTime.innerText = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+        playerUI.classList.remove('playing');
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        progressBar.style.width = '0%';
+        statusText.innerText = "ЗАВЕРШЕНО";
+    });
+}
+
+function formatTime(seconds) {
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+}
