@@ -215,9 +215,15 @@ function createBinaryExplosion(x, y) {
 /* =========================================
    6. ПРИНУДИТЕЛЬНОЕ СКАЧИВАНИЕ
    ========================================= */
+
 function forceDownload(url, fileName) {
     fetch(url)
-        .then(response => response.blob())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
         .then(blob => {
             const blobUrl = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -227,13 +233,15 @@ function forceDownload(url, fileName) {
             link.click();
             document.body.removeChild(link);
             window.URL.revokeObjectURL(blobUrl);
-            addLogEntry(`DOWNLOAD: ${fileName} success`);
+            console.log(`DOWNLOAD: ${fileName} success`);
         })
         .catch(err => {
             console.error('Ошибка:', err);
             alert("Ошибка загрузки. Проверьте папку file/");
         });
 }
+
+
 
 /* =========================================
    7. АУДИО ПЛЕЕР
