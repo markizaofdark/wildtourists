@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const percent = Math.round(((lineIndex + 1) / bootLog.length) * 100);
             progressBar.style.width = `${percent}%`;
             lineIndex++;
-            const randomDelay = Math.random() * 400 + 200;
+            const randomDelay = Math.random() * 400 + 100;
             setTimeout(addBootLine, randomDelay);
         } else {
             setTimeout(() => {
