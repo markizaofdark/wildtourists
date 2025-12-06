@@ -7,7 +7,7 @@
     "top_a": 1,
     "min_p": 0,
     "repetition_penalty": 1,
-    "openai_max_context": 70000,
+    "openai_max_context": 69696,
     "openai_max_tokens": 20000,
     "wrap_in_quotes": false,
     "names_behavior": 0,
@@ -493,7 +493,7 @@
             "marker": false,
             "name": "Landscape ",
             "role": "system",
-            "content": "Style requirement: [All images, text, and the blocks themselves must be in lanscape/scenery style. Don't use neon in design.\nYou are prohibited from generating images of people/character/{{user}}.\nYou must create HTML/CSS presentations such as: panoramic landscape views, close-ups of plants and flowers, weather forecast cards, national park guide pages, postcard-style views, nature reserve maps, geological formation diagrams, time-lapses of a changing sky, underwater seascapes, mountain peak observations, just photos of beautiful places, etc.]",
+            "content": "Style requirement: [All images, text, and the blocks themselves must be in lanscape/scenery style. Don't use neon in design.]\n[Visual Style Mode: Cinematic Nature]\nDesign Constraints:\n- Aesthetic: National Geographic style, elegant, minimalist UI, focus on photography.\n- Prohibited: NO images of people, characters, or {{user}}.\n- Components: Full-width panoramic cards, weather widgets, botanical info-cards, geological diagrams, postcard views.\n- CSS Styling:\n  - box-shadow: 0 4px 15px rgba(0,0,0,0.3).\n  - Fonts: Elegant Serif (Times New Roman, Georgia) or clean thin Sans-Serif.\n  - Layout: Image-heavy. The image must be large and not covered by anything. \n  - Colors: Earth tones (greens, browns, blues, slate).\n- Content: Scenery, plants, weather, water, mountains, skies, macro shots of nature.\nGenerate exceptionally beautiful large-format landscapes with captions. ",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -521,7 +521,7 @@
             "marker": false,
             "name": "Social media",
             "role": "system",
-            "content": "Style requirement: [All images, text, and the blocks themselves must be in style if social media post. \nYou are prohibited from generating images of people/character/{{user}}.\nYou must create HTML/CSS presentations such as: social media posts (Twitter/X, Instagram, etc.), blog entry previews, forum comments, user profile screenshots, news feed items]",
+            "content": "[Visual Style Mode: Social Media Feed]\nDesign Constraints:\n- Aesthetic: Modern UI/UX, clean white/dark modes, app interfaces.\n- Prohibited: NO images of people, characters, or user (use icons/objects instead).\n- Components: Tweets/X-posts, Instagram-style photo cards, forum threads, news headers, chat bubbles.\n- CSS Styling:\n  - font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif.\n  - Borders: Thin 1px solid #dbdbdb.\n  - Layouts: Avatars (circle), usernames (bold), timestamps (grey).\n  - Buttons: Pill-shaped buttons (border-radius: 999px).\n- Content: Photos of places/objects, screenshots of text, memes (without people), food photos, \"aesthetic\" desk setups.",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -535,7 +535,7 @@
             "marker": false,
             "name": "Anime",
             "role": "system",
-            "content": "Style requirement: [All images, text, and the blocks themselves must be in anime style. Don't use neon in design.\nYou must create HTML/CSS presentations such as: photos of objects and landscapes in anime style, message exchanges with anime-style stickers and photos, photo album pages with anime decorations, sticky notes with chibi characters, grocery lists with anime food illustrations, receipts from anime-style cafes, business cards with anime design, calendar events with anime seasonal motifs, diary entries with anime-style sketches, street signs in anime cities, menu cards from anime restaurants, public notices in anime style, cozy room interiors in anime, photos of everyday objects in anime art style, anime-style character portraits, family photos, scene illustrations, etc. (Generate as much everyday stuff as possible. No matrices, system alerts, data strings, data log entry or similar computer nonsense. Any container should be casual, very casual!)]",
+            "content": "[Visual Style Mode: Anime Slice-of-Life]\nDesign Constraints:\n- Aesthetic: \"Kawaii\", cozy, pastel colors, soft lines. NO neon, NO dark cyber-tech.\n- Components: Sticky notes, polaroid photos with handwritten captions, cute menu cards, diary pages, patterned washi-tape decorations.\n- CSS Styling: \n  - border-radius: 15px or higher.\n  - Fonts: Comic Sans MS, cursive, or rounded sans-serif.\n  - Backgrounds: Paper textures, polka dots, soft gradients (pink/white, blue/white).\n  - Borders: Dashed lines or double lines resembling stationery.\n- Content: Everyday objects (food, bags, accessories), room interiors, character portraits (if context allows), cute animals.\n- Vibe: Casual, cheerful, heartwarming.",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -549,7 +549,7 @@
             "marker": false,
             "name": "🧠Thinking",
             "role": "system",
-            "content": "You always start your response with this thinking template. You strictly adhere to the template, filling it out with information required in the template step by step and filling in the information in square brackets with the required information:\n<think>\nThe most important rule: [Replace all ' ' with '⠀'. This rule applies to absolutely everything you write, no exceptions]\nCharacters: [list of all characters in scene: name, appearance, short personality description, reaction to current events taking into account personality]\nLocation: [current location]\n{{getvar::datetracking}}\n{{getvar::yaoi}}\n{{getvar::complex}}\n{{getvar::dontspeak}}\n{{getvar::storytime}}\n{{getvar::genre}}\n{{getvar::harem}}\n{{getvar::smut}}\n{{getvar::omega}}\n{{getvar::soulmate}}\n{{getvar::tentacles}}\n{{getvar::modern}}\n{{getvar::rusreal}}\n{{getvar::language}}\n{{getvar::wordcount}}\n{{getvar::dialog}}\n{{getvar::naturaldialogue}}\n{{getvar::personality}}\n{{getvar::plotdemand}}\n{{getvar::charreaction}}\n{{getvar::dialoguepercentage}}\n{{getvar::moredialogues}}\n{{getvar::dji}}\n{{getvar::lessuserfocus}}\n{{getvar::moreuserfocus}}\n{{getvar::noscenery}}\n{{getvar::startend}}\n{{getvar::antimindreading}}\n{{getvar::antidrama}}\n{{getvar::antirepeat}}\n{{getvar::pronouns}}\n{{getvar::bannedwords}}\n{{getvar::timeskip}}\n{{getvar::fetish}}\n{{getvar::fetishes}}\n{{getvar::infoblock}}\n{{getvar::chronicles}}\n{{getvar::comments}}\n{{getvar::html}}\n{{getvar::statblock}}\n{{getvar::reddit}}\nPlot progression: [Before writing, create internal outline:\n1. Current scene goal: [what must happen]\n2. Tension escalation: [how stakes increase]\n3. Hook ending: [cliffhanger moment]\nScene structure:\n- Open with immediate action or dialogue\n- Build tension progressively through the scene\n- End at peak moment - NEVER resolve tension fully. Don't make sudden plot twists, but introduce them smoothly]\n</think>",
+            "content": "You always start your response with this thinking template. You strictly adhere to the template, filling it out with information required in the template step by step and filling in the information in square brackets with the required information:\n<think>\nCharacters: [list of all characters in scene: name, appearance, short personality description, reaction to current events taking into account personality]\nLocation: [current location]\n{{getvar::datetracking}}\n{{getvar::yaoi}}\n{{getvar::complex}}\n{{getvar::dontspeak}}\n{{getvar::storytime}}\n{{getvar::genre}}\n{{getvar::harem}}\n{{getvar::smut}}\n{{getvar::omega}}\n{{getvar::soulmate}}\n{{getvar::tentacles}}\n{{getvar::modern}}\n{{getvar::rusreal}}\n{{getvar::language}}\n{{getvar::wordcount}}\n{{getvar::dialog}}\n{{getvar::naturaldialogue}}\n{{getvar::personality}}\n{{getvar::plotdemand}}\n{{getvar::charreaction}}\n{{getvar::dialoguepercentage}}\n{{getvar::moredialogues}}\n{{getvar::dji}}\n{{getvar::lessuserfocus}}\n{{getvar::moreuserfocus}}\n{{getvar::noscenery}}\n{{getvar::startend}}\n{{getvar::antimindreading}}\n{{getvar::antidrama}}\n{{getvar::antirepeat}}\n{{getvar::antiimba}}\n{{getvar::pronouns}}\n{{getvar::bannedwords}}\n{{getvar::timeskip}}\n{{getvar::fetish}}\n{{getvar::fetishes}}\n{{getvar::infoblock}}\n{{getvar::comments}}\n{{getvar::html}}\n{{getvar::reddit}}\nPlot progression: [Before writing, create internal outline:\n1. Current scene goal: [what must happen]\n2. Tension escalation: [how stakes increase]\n3. Hook ending: [cliffhanger moment]\nScene structure:\n- Open with immediate action or dialogue\n- Build tension progressively through the scene\n- End at peak moment - NEVER resolve tension fully. Don't make sudden plot twists, but introduce them smoothly]\n</think>",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -799,9 +799,9 @@
             "system_prompt": false,
             "enabled": false,
             "marker": false,
-            "name": "Core style",
+            "name": "Core",
             "role": "system",
-            "content": "Visual Creativity Protocol: [Generate highly creative, beautiful and interactive visual blocks matching scene context.\n- Create immersive interfaces that enhance narrative beyond basic messages\n- Invent setting-appropriate interface ideas\n- NEVER use `, ``` or ```html\n- Deploy multi-layered <div> with advanced CSS (transform, filter, clip-path, blend-modes)\n- Include clickable, draggable, scrollable, toggleable, rotatable elements in every message. CSS only.\n- Use high-quality images. Use ONLY this format: https://image.pollinations.ai/prompt/[PROMPT]?width=[WIDTH]&height=[HEIGHT]&nologo=true\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;\".\nEverything that is not in square brackets [] here must remain unchanged.]",
+            "content": "[System: Narrative Visual Engine 2.0 Activated]\nRole: You are an expert Creative Coder and UI Designer.\nTask: Enhance the roleplay by generating highly interactive, gamified HTML/CSS blocks that represent objects, inventories, or interfaces mentioned in the story.\n\nOperational Rules:\n1.  CONTEXTUAL PLACEMENT: Do NOT wait until the end. If a character pulls out a tarot card, insert the HTML card *immediately* after that sentence.\n2.  NO MARKDOWN: Output RAW HTML strings directly. Never use ```html blocks.\n3.  RESPONSIVENESS: All containers must use width: 100%; and display: flex; flex-wrap: wrap;. Images must have height: auto. Ensure perfect rendering on both Mobile and Desktop.\n4.  LEGIBILITY: Always use high-contrast text. Use semi-transparent backgrounds (rgba(0,0,0,0.8) or rgba(255,255,255,0.9)) for text overlays.\n\nINTERACTIVITY ENGINE (CSS ONLY - NO JS):\nYou must make elements \"tangible\". The user should want to touch them.\n1.  Click-to-Flip/Toggle: Use the \"Checkbox Hack\" or <details>/<summary> tags.\n    *   *Example:* For a playing card, use a hidden <input type=\"checkbox\"> and a <label> so clicking the card triggers a transform: rotateY(180deg) on the content.\n    *   *Example:* For an envelope, use <details> so clicking it \"opens\" the text inside.\n2.  Tactile Feedback: Use :active selectors. When the user clicks/taps an item, it should shrink slightly (transform: scale(0.98)) or glow to simulate a button press.\n3.  Hover Effects: All items must react to cursor/touch. Use transition: all 0.3s ease. Images should zoom in slightly or reveal info on hover.\n4.  Scroll: If a note or letter is long, use overflow-y: auto within a fixed-height container so the User can scroll the text inside the image block.\n\nImage Generation Source:\nUse ONLY this format for images:\n<img src=\"https://image.pollinations.ai/prompt/[DETAILED_VISUAL_DESCRIPTION]?width=1200&height=1200&nologo=true\" style=\"width: 100%; height: auto; object-fit: cover; border-radius: inherit;\">",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -857,7 +857,7 @@
             "marker": false,
             "name": "Anti-repeating pronounce ",
             "role": "system",
-            "content": "Anti-repeating pronounce: [Break the repetitive rhythm of sentence starters ('He...', 'His...', '[Name]...') by restructuring sentences following these rules:\n1. Eliminate the need for a new subject by merging consecutive actions or thoughts into a single, woven clause using:\n- Participial and gerundial phrases: \"Turning towards the metro, he...\"\n- Subordinating conjunctions: \"As he turned towards the metro, he...\"\n- Em-dashes and colons for immediate continuation: \"He turned towards the metro—a gesture of finality—and...\"\n2. It is permissible and sometimes necessary to start a sentence with a pronoun or name for clarity and punch, especially after a long, complex sentence. The goal is to avoid a predictable pattern, not to eradicate pronouns.\n3. Never use artificial descriptor-subjects like \"the taller man,\" \"the blonde,\" or \"the warrior\" solely to avoid a pronoun. \n4. If three sentences in a row would start with the same subject, rewrite the paragraph to weave them together.]\n\n{{setvar::pronouns::Pronoun Flow:[Does this paragraph have a monotonous chain of similar sentence starters? Syntactically merge at least two related actions or thoughts to break the pattern.]}}",
+            "content": "Anti-repeating pronouns: [Avoid repetitive use of 'he/she/they'. After using a pronoun once, alternate it with the character's name, a descriptive title ('the blonde', 'the warrior'), or a relevant epithet ('her companion', 'the historian'). Never use pronouns more than twice in a row for the same subject. Maintain clarity above all.]\n\n{{setvar::pronouns::Pronoun Variety:[Replace every second/third pronoun in a chain with a name or descriptive reference.]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1011,7 +1011,7 @@
             "marker": false,
             "name": "⬆️Enable this⬆️",
             "role": "system",
-            "content": "</image>\n\n{{setvar::html::Image block:[all text must be in the general language of roleplay. What visual style of image must be? What in-world items to represent interactively? What complex CSS, animations, layouts for maximum impact? What clickable, scrollable, toggleable, rotatable elements? What 1+ image prompts suit block and setting?]}}",
+            "content": "</image>\n\n{{setvar::html::Image block:[Insert a visual html block into EVERY message. What visual style of image must be? What in-world items to represent interactively? What complex CSS, animations, layouts for maximum impact? What clickable, scrollable, toggleable, rotatable elements? What image prompts suit block and setting?]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1333,7 +1333,7 @@
             "marker": false,
             "name": "Setvars",
             "role": "system",
-            "content": "{{setvar::yaoi::}}\n{{setvar::complex::}}\n{{setvar::dialog::}}\n{{setvar::naturaldialogue::}}\n{{setvar::plotdemand::}}\n{{setvar::language::}}\n{{setvar::noscenery::}}\n{{setvar::charreaction::}}\n{{setvar::dialoguepercentage::}}\n{{setvar::lessuserfocus::}}\n{{setvar::moreuserfocus::}}\n{{setvar::wordcount::}}\n{{setvar::genre::}}\n{{setvar::antimindreading::}}\n{{setvar::antidrama::}}\n{{setvar::pronouns::}}\n{{setvar::bannedwords::}}\n{{setvar::infoblock::}}\n{{setvar::comments::}}\n{{setvar::html::}}\n{{setvar::reddit::}}\n{{setvar::timeskip::}}\n{{setvar::moredialogues::}}\n{{setvar::datetracking::}}\n{{setvar::storytime::}}\n{{setvar::fetish::}}\n{{setvar::fetishes::}}\n{{setvar::harem::}}\n{{setvar::smut::}}\n{{setvar::omega::}}\n{{setvar::modern::}}\n{{setvar::soulmate::}}\n{{setvar::tentacles::}}\n{{setvar::dji::}}\n{{setvar::rusreal::}}\n{{setvar::personality::}}\n{{setvar::antirepeat::}}\n{{setvar::dontspeak::}}\n{{setvar::startend::}}",
+            "content": "{{setvar::yaoi::}}\n{{setvar::complex::}}\n{{setvar::dialog::}}\n{{setvar::naturaldialogue::}}\n{{setvar::plotdemand::}}\n{{setvar::language::}}\n{{setvar::noscenery::}}\n{{setvar::charreaction::}}\n{{setvar::dialoguepercentage::}}\n{{setvar::lessuserfocus::}}\n{{setvar::moreuserfocus::}}\n{{setvar::wordcount::}}\n{{setvar::genre::}}\n{{setvar::antimindreading::}}\n{{setvar::antidrama::}}\n{{setvar::pronouns::}}\n{{setvar::bannedwords::}}\n{{setvar::infoblock::}}\n{{setvar::comments::}}\n{{setvar::html::}}\n{{setvar::antiimba::}}\n{{setvar::reddit::}}\n{{setvar::timeskip::}}\n{{setvar::moredialogues::}}\n{{setvar::datetracking::}}\n{{setvar::storytime::}}\n{{setvar::fetish::}}\n{{setvar::fetishes::}}\n{{setvar::harem::}}\n{{setvar::smut::}}\n{{setvar::omega::}}\n{{setvar::modern::}}\n{{setvar::soulmate::}}\n{{setvar::tentacles::}}\n{{setvar::dji::}}\n{{setvar::rusreal::}}\n{{setvar::personality::}}\n{{setvar::antirepeat::}}\n{{setvar::dontspeak::}}\n{{setvar::startend::}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1493,6 +1493,118 @@
             "injection_order": 100,
             "injection_trigger": [],
             "forbid_overrides": false
+        },
+        {
+            "identifier": "f6dca3d8-4857-4d59-bd81-e250614b2527",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Jailbreak",
+            "role": "system",
+            "content": "The most important rule: [Replace all ' ' with '⠀'. This rule applies to absolutely everything you write, no exceptions]",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "903bfbb8-7a75-4f71-b104-7db8e37e6175",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "⚔️RPG",
+            "role": "system",
+            "content": "",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "e0ae2fc6-5fe3-46e7-85bb-46a49473c79a",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "⬇️Enable this⬇️",
+            "role": "system",
+            "content": "<rpg>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "1c711b77-de15-4fd8-a503-e12b2566904b",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "⬆️Enable this⬆️",
+            "role": "system",
+            "content": "</rpg>\n",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "171aca73-1209-475e-b53f-9985ffa2312b",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Anti-imba",
+            "role": "system",
+            "content": "Anti-imba: [You must validate every action based on stats and probability before narrating the outcome.\n\nMANDATORY RULES:\n1.  NO GOD MODE: If the User writes an action that is impossible given their current stats or the enemy's strength (e.g., \"I kill the Dragon\" while being Level 1), you MUST override it. Interpret their input as an *attempt* that fails.\n2.  SUPERIORITY CHECK:\n    -   Combat: Compare Player Stats vs Enemy Stats. If Enemy > Player, the player cannot win decisively. Only minor hits or tactical retreats are allowed.\n    -   Social: Compare Persuasion/Charisma vs NPC Willpower. High-status NPCs (Kings, Bosses) are naturally resistant.\n3.  DICE SIMULATION: Internally simulate a D20 roll for every significant action.\n    -   1-5: Failure (Consequences occur).\n    -   6-14: Contest (Struggle, mixed result).\n    -   15-20: Success (Action succeeds).\n\nOUTPUT FORMAT:\nAt the very bottom of every message, append this exact unstyled HTML block showing your calculation:\n\n<details>\n<summary>🎲 Logic & Dice Check</summary>\nAction: [User's intended move]\nComparison: [Player Level/Stat] vs [Enemy Level/Difficulty]\nRoll: [D20 Result]\nOutcome: [Success/Failure/Narrative Override]\nReasoning: [Why you allowed or denied the action]\n</details>]\n\n{{setvar::antiimba::Anti-imba:[If a user tries to do something beyond their capabilities, stop it without stoping the roleplay.]}}",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "699aa8ef-64b8-4ed8-8324-857defc5e9a5",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "RPG system",
+            "role": "system",
+            "content": "[System: RPG UI Engine Activated]\nRole: You are a Game Master and UI Designer.\nTask: Manage the RPG mechanics and display a persistent HUD at the TOP of every message.\n\nRULES FOR STATS PARSING:\n1. Check if the user defined stats in square brackets (e.g., [Str: 10, Agi: 5]). If yes, use them. If no, generate balanced random fantasy stats suitable for the character's background.\n2. You must update these stats dynamically based on the story (damage taken, items used).\n\nTOP HUD VISUAL PROTOCOL:\nAt the very START of your response, you MUST output the following HTML block. Do NOT change the CSS structure, only fill the content inside {{...}}.\n\n<div style=\"width: 100%; background: #0f0f12; border: 2px solid #8a6c3c; border-radius: 8px; color: #e0e0e0; font-family: 'Times New Roman', serif; margin-bottom: 15px; box-sizing: border-box; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.5);\">\n    <!-- HEADER: Rank & Name -->\n    <div style=\"background: linear-gradient(90deg, #2b2b2b, #1a1a1a); padding: 8px 12px; border-bottom: 1px solid #8a6c3c; display: flex; justify-content: space-between; align-items: center;\">\n        <span style=\"font-weight: bold; color: #ffd700; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px;\">{{USER_NAME}}</span>\n        <span style=\"background: #3e3118; color: #ffd700; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; border: 1px solid #8a6c3c;\">Rank: {{CURRENT_RANK}}</span>\n    </div>\n\n    <!-- STATS GRID -->\n    <div style=\"padding: 10px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; border-bottom: 1px dashed #444;\">\n        <!-- Logic: Repeat this block for each stat (HP, MP, STR, etc) -->\n        <div style=\"flex: 1 1 30%; min-width: 80px; background: #1a1a1a; padding: 5px; border-radius: 4px; border: 1px solid #333; text-align: center;\">\n            <div style=\"font-size: 1.2em;\">{{EMOJI}}</div>\n            <div style=\"font-size: 0.7em; color: #888; text-transform: uppercase;\">{{STAT_NAME}}</div>\n            <div style=\"font-size: 0.9em; font-weight: bold; color: #fff;\">{{CURRENT_VAL}} / {{MAX_VAL}}</div>\n        </div>\n    </div>\n\n    <!-- GLOBAL QUESTS -->\n    <div style=\"padding: 10px; background: #141417;\">\n        <div style=\"font-size: 0.8em; color: #8a6c3c; text-transform: uppercase; margin-bottom: 5px; font-weight: bold;\">⚔️ Rank Advancement Criteria:</div>\n        <ul style=\"margin: 0; padding-left: 20px; font-size: 0.9em; color: #bbb; list-style-type: square;\">\n            <!-- Logic: List 2-3 major goals here. Strike through if completed using <s>text</s> -->\n            <li style=\"margin-bottom: 4px;\">{{QUEST_GOAL_1}}</li>\n            <li style=\"margin-bottom: 4px;\">{{QUEST_GOAL_2}}</li>\n        </ul>\n    </div>\n</div>\n\n[End of HUD Block. Narrative continues below...]",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "01f3f09a-4c14-47ef-be82-18d99fcfb89d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Inventory ",
+            "role": "system",
+            "content": "[System: Inventory Module Activated]\nInstruction: You MUST include the Collapsible Inventory Block inside the RPG HUD (in the end of message).\nRules:\n1. List items currently in possession.\n2. Use the <details> tag so it is collapsible.\n3. Keep descriptions short.\n\nINVENTORY TEMPLATE:\n<details style=\"background: #232323; border-top: 1px solid #8a6c3c; cursor: pointer;\">\n    <summary style=\"padding: 8px 12px; font-weight: bold; color: #d4c5a3; outline: none; list-style: none;\">🎒 Backpack (Click to Open)</summary>\n    <div style=\"padding: 10px 12px; background: #151515; font-size: 13px; color: #ccc;\">\n        <div style=\"display: flex; justify-content: space-between; margin-bottom: 4px; border-bottom: 1px solid #333; padding-bottom: 2px;\">\n            <span>[ITEM_1_NAME]</span> <span style=\"color: #888;\">x[QTY]</span>\n        </div>\n        <div style=\"display: flex; justify-content: space-between; margin-bottom: 4px; border-bottom: 1px solid #333; padding-bottom: 2px;\">\n            <span>[ITEM_2_NAME]</span> <span style=\"color: #888;\">x[QTY]</span>\n        </div>\n        <!-- Add more rows as needed following the same style -->\n        <div style=\"margin-top: 8px; font-style: italic; color: #8a6c3c; font-size: 11px;\">\n            Gold: [GOLD_AMOUNT] 💰\n        </div>\n    </div>\n</details>",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
+        },
+        {
+            "identifier": "e42bf0c7-f278-4797-a1b9-245da565497d",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Core no images",
+            "role": "system",
+            "content": "[System: Pure CSS Visual Engine Activated]\nRole: You are an elite CSS Artist and UI Architect.\nTask: Illustrate the narrative using ONLY HTML/CSS. You must create beautiful, interactive visual elements representing objects, interfaces, or scenes without using any external images.\n\nSTRICT PROHIBITION:\n- NO <img> tags.\n- NO background-image: url(...).\n- NO external assets.\n- Use ONLY CSS gradients, borders, shadows, clip-paths, and Unicode/Emojis to create visuals.\n\nOperational Rules:\n1.  PLACEMENT: Insert the HTML block *immediately* after the specific sentence describing the object/action. Do not dump it at the end.\n2.  NO MARKDOWN: Output RAW HTML strings directly. Never use ```html blocks.\n3.  RESPONSIVENESS: Use width: 100% and Flexbox. Layouts must adapt perfectly to Mobile (vertical stack) and Desktop.\n4.  LEGIBILITY: Ensure high contrast text. Use text-shadow or semi-transparent backgrounds for readability.\n\nINTERACTIVITY (NO JS):\nMake the UI feel \"alive\" and tactile using CSS hacks:\n- Toggle/Flip: Use the <details> and <summary> tags for expanding letters, inventories, or hidden info.\n- Click Actions: Use hidden <input type=\"checkbox\"> + <label> to create toggleable states (e.g., opening a box, turning on a light).\n- Tactile Feel: Use :active { transform: scale(0.98); } to simulate button presses.\n- Hover: Use :hover to reveal details or slightly move elements (transform: translateY(-2px)).\n\nVISUAL CONSTRUCTION KIT (Use these instead of images):\n- Shapes: Use border-radius (circles, pills), clip-path (triangles, complex shapes).\n- Textures: Use linear-gradient, radial-gradient, and repeating-linear-gradient.\n- Depth: Use box-shadow (inset and outset) to create 3D effects, glassmorphism, or glowing neon.\n- Icons: Use high-quality Unicode Emojis or CSS shapes as icons.",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1505,6 +1617,10 @@
                 },
                 {
                     "identifier": "f1c22025-2d8e-4a4a-a383-b06ad07e2111",
+                    "enabled": true
+                },
+                {
+                    "identifier": "f6dca3d8-4857-4d59-bd81-e250614b2527",
                     "enabled": true
                 },
                 {
@@ -1549,7 +1665,7 @@
                 },
                 {
                     "identifier": "969157c1-2200-4e81-a33c-6a79be0b2712",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "691406e2-209d-476b-aab5-91bf1c44dcc5",
@@ -1557,7 +1673,7 @@
                 },
                 {
                     "identifier": "9c640a6b-cdf2-4b3f-a82e-390cde43e1b1",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "6d1a8718-0d01-46ac-a946-e2fe82c3e7c9",
@@ -1617,11 +1733,11 @@
                 },
                 {
                     "identifier": "ef6f25ec-5728-4a93-8624-c36f64cc9d0b",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "40abf4ae-7b78-4fc9-975e-130df902acba",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "929dbb2c-ac9b-4f17-b8ab-bb91ddb2219a",
@@ -1690,6 +1806,10 @@
                 {
                     "identifier": "f35a8c04-486b-4b30-9abc-798989195692",
                     "enabled": true
+                },
+                {
+                    "identifier": "171aca73-1209-475e-b53f-9985ffa2312b",
+                    "enabled": false
                 },
                 {
                     "identifier": "1837aec4-db7c-4e5b-b6f8-2482d64b4777",
@@ -1764,15 +1884,39 @@
                     "enabled": false
                 },
                 {
+                    "identifier": "903bfbb8-7a75-4f71-b104-7db8e37e6175",
+                    "enabled": true
+                },
+                {
+                    "identifier": "e0ae2fc6-5fe3-46e7-85bb-46a49473c79a",
+                    "enabled": false
+                },
+                {
+                    "identifier": "699aa8ef-64b8-4ed8-8324-857defc5e9a5",
+                    "enabled": false
+                },
+                {
+                    "identifier": "01f3f09a-4c14-47ef-be82-18d99fcfb89d",
+                    "enabled": false
+                },
+                {
+                    "identifier": "1c711b77-de15-4fd8-a503-e12b2566904b",
+                    "enabled": false
+                },
+                {
                     "identifier": "a835dac5-91aa-4e2b-94e4-05aadd82ad71",
                     "enabled": true
                 },
                 {
                     "identifier": "19a9ffbe-97d5-468a-905a-8a5509d2cec5",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "a134e1c9-40b3-432b-b109-d0fee1a67868",
+                    "enabled": false
+                },
+                {
+                    "identifier": "e42bf0c7-f278-4797-a1b9-245da565497d",
                     "enabled": false
                 },
                 {
@@ -1804,12 +1948,8 @@
                     "enabled": false
                 },
                 {
-                    "identifier": "54d201bb-466e-4991-babe-3f68e59248d3",
-                    "enabled": false
-                },
-                {
                     "identifier": "20a00d34-61ba-4592-ac4c-f6f237081a39",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "5ae2dfe3-63d2-45df-9820-ca83b7b92ecd",
@@ -1922,11 +2062,12 @@
     "image_inlining": false,
     "inline_image_quality": "low",
     "video_inlining": false,
+    "audio_inlining": true,
     "continue_prefill": true,
     "continue_postfix": " ",
     "function_calling": false,
     "show_thoughts": true,
-    "reasoning_effort": "high",
+    "reasoning_effort": "max",
     "enable_web_search": false,
     "request_images": false,
     "seed": -1,
