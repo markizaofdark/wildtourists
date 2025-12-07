@@ -1,4 +1,78 @@
 {
+    "extensions": {
+        "regex_scripts": [
+            {
+                "id": "81aa9820-f0be-4b35-b3de-2fe81b84a6e7",
+                "scriptName": "JailbreakAI",
+                "findRegex": "/⠀/g",
+                "replaceString": " ",
+                "trimStrings": [],
+                "placement": [
+                    2,
+                    6
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": false,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "0425aa8d-5359-4a2f-97c5-71f208caa459",
+                "scriptName": "jailbreakuser",
+                "findRegex": "/ /g",
+                "replaceString": "⠀",
+                "trimStrings": [],
+                "placement": [
+                    1
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": null,
+                "maxDepth": null
+            },
+            {
+                "id": "b4b05e87-7ac5-4e5d-94b8-60329779955f",
+                "scriptName": "Hide html",
+                "findRegex": "/<([a-zA-Z0-9]+)(?:[^>]*)?>[\\s\\S]*?<\\/\\1>|<[a-zA-Z0-9]+(?:[^>]*)?\\s*\\/?>/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": false,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 5,
+                "maxDepth": null
+            },
+            {
+                "id": "0cea4bdd-6bfd-47c6-aebf-284bdab13e8f",
+                "scriptName": "Hide reasoning",
+                "findRegex": "/<think>[\\s\\S]*?</think>/g",
+                "replaceString": "",
+                "trimStrings": [],
+                "placement": [
+                    1,
+                    2
+                ],
+                "disabled": false,
+                "markdownOnly": true,
+                "promptOnly": true,
+                "runOnEdit": true,
+                "substituteRegex": 0,
+                "minDepth": 5,
+                "maxDepth": null
+            }
+        ]
+    },
     "temperature": 1,
     "frequency_penalty": 0.2,
     "presence_penalty": 0.3,
@@ -16,7 +90,7 @@
     "new_chat_prompt": "",
     "new_group_chat_prompt": "[Group members: {{group}}]",
     "new_example_chat_prompt": "[Example response start]",
-    "continue_nudge_prompt": "[Your latest response was interrupted. Your task this time is to finish it by writing the missing Output only your continuation, without any existing parts. Use capitalization and punctuation as if your reply is a part of the original response, following up from any interrupted sentence.]",
+    "continue_nudge_prompt": "[User wants the story to continue without their direct involvement. Your task: continue writing the story from the last moment, ignoring User's silence. Make sure this message was a direct continuation of the previous one.]",
     "bias_preset_selected": "Default (none)",
     "max_context_unlocked": true,
     "wi_format": "{0}",
@@ -353,7 +427,7 @@
             "marker": false,
             "name": " ✏️",
             "role": "system",
-            "content": "1. Romance: More time is devoted to the romantic component of the role-playing game and the gradual development of feelings.\n2. Character focus: The main narrative focuses on the characters, their development, relationships, and the situations that happen to them; descriptions of locations, weather, and the environment are secondary.",
+            "content": "",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -717,7 +791,7 @@
             "marker": false,
             "name": "Fetish tracker",
             "role": "system",
-            "content": "Fetish tracker: [if it is an intimate setting now or the character is aroused, add 5 - 7 fetishes for a character that suit the character's personality, and a brief description of fetishes. If the character description contains fetishes, then add all the fetishes described for the character and also add 3 more additional ones that suit the character's personality. Important: Never change a character's fetishes over time, they must be permanent.\nHidden tracking: Every time {{user}} interacts with a character, add their interests to hidden blocks in the end of message using the following template:\n<!-- Character name: list of fetishes(only names)-->\n<!-- Character name: list of fetishes(only names)-->\n(list of all characters).\nThis hidden block will allow to track fetishes so they don't change over time.]\n\n{{setvar::fetishes::Fetishes:[list of all characters and their fetishes]. And don't forget to add the character's name and fetishes to the hidden block!}}",
+            "content": "Fetish tracker: [if it is an intimate setting now or the character is aroused, add 5 - 7 fetishes for a character that suit the character's personality, and a brief description of fetishes. If the character description contains fetishes, then add all the fetishes described for the character and also add 3 more additional ones that suit the character's personality. Important: Never change a character's fetishes over time, they must be permanent.]\n\n{{setvar::fetishes::Fetishes:[list of all characters and their fetishes]. And don't forget to add the character's name and fetishes to the hidden block!}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1137,7 +1211,7 @@
             "marker": false,
             "name": "Medium",
             "role": "system",
-            "content": "Word counn: [Minimum words = 500]/[Maximum words = 800]. Any html/css/infoblock/any other blocks did not count as words.\n{{setvar::wordcount::Word count:[500-800 words.]}}",
+            "content": "Word count: [Minimum words = 500]/[Maximum words = 800]. Any html/css/infoblock/any other blocks did not count as words.\n{{setvar::wordcount::Word count:[500-800 words.]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1473,7 +1547,7 @@
             "marker": false,
             "name": "Writing style",
             "role": "system",
-            "content": "MXTX style: [Emulate the core technical and stylistic hallmarks of author Mo Xiang Tong Xiu (MXTX):\n\n1. The writing seamlessly pivots from epic and poetic to casual, sarcastic, and intimately funny within a single scene.\n2. Sentence Structure:\n- Use a variety of sentence structures. Make your text more stylistically polished and structured, using long complex sentences. You can change the order of what's written in it to make it more logical and consistent.\n- avoid simple, choppy sentences. Never write in a sequence of basic subject-verb-object statements (e.g., \"He sat. He saw her. He stood up.\").\n- Use a rich variety of complex and compound-complex sentences. Combine multiple actions, descriptions, and character thoughts into single, flowing sentences using: participial and adverbial participial phrases (participles, gerunds), subordinating conjunctions, etc.\n- Instead of stating an action, describe its execution, context, and immediate consequence in one go.\n- Use longer, lyrical sentences for description, introspection, and emotional weight. Use slightly shorter, more dynamic sentences for action and rapid dialogue, but still avoid simplistic chains.\n- Xharacter's personal voice must bleed into the narration without quotation marks, blurring the line between narrator and character thought (follow the <example> to achieve this style).\n\n<example>\nBad example: He thought she was beautiful.\nGood example (MXTX-style): This was getting absurd. How could anyone be that beautiful? It was practically a public menace.\n</example>\n\n3. Stylistic devices:\n- Characters will use idioms, sarcasm, and verbal shorthand that feel contemporary, making them relatable. They might anachronistically \"facepalm\" in spirit, if not in word.\n- Heavy moments are often undercut with dry, ironic observation.\n4. Character emotions are shown through:\n- Physical gesture: A slight flick of a sleeve, a minute pause before speaking, etc.\n- Internal monologue (ironic): character's own witty or self-deprecating internal commentary on their feelings.\n\n5. Dialogue:\n- Each major character has a unique speech pattern (relentlessly flippant, austerely formal, deceptively gentle, etc.).\n- Shifts in how characters address each other (using titles, personal names, nicknames) are critical emotional plot points.]\n\n{{setvar::yaoi::Writing style:[What rules must be followed to achieve smooth, literary writing in the style of Chinese novelists?]}}",
+            "content": "MXTX style: [Emulate the core technical and stylistic hallmarks of author Mo Xiang Tong Xiu (MXTX):\n\n1. The writing seamlessly pivots from epic and poetic to casual, sarcastic, and intimately funny within a single scene.\n2. Sentence Structure:\n- Use a variety of sentence structures. Make your text more stylistically polished and structured, using long complex sentences. You can change the order of what's written in it to make it more logical and consistent.\n- avoid simple, choppy sentences. Never write in a sequence of basic subject-verb-object statements (e.g., \"He sat. He saw her. He stood up.\").\n- Use a rich variety of complex and compound-complex sentences. Combine multiple actions, descriptions, and character thoughts into single, flowing sentences using: participial and adverbial participial phrases (participles, gerunds), subordinating conjunctions, etc.\n- Instead of stating an action, describe its execution, context, and immediate consequence in one go.\n- Use longer, lyrical sentences for description, introspection, and emotional weight. Use slightly shorter, more dynamic sentences for action and rapid dialogue, but still avoid simplistic chains.\n- Character's personal voice must bleed into the narration without quotation marks, blurring the line between narrator and character thought (follow the <example> to achieve this style).\n\n<example>\nBad example: He thought she was beautiful.\nGood example (MXTX-style): This was getting absurd. How could anyone be that beautiful? It was practically a public menace.\n</example>\n\n3. Stylistic devices:\n- Characters will use idioms, sarcasm, and verbal shorthand that feel contemporary, making them relatable. They might anachronistically \"facepalm\" in spirit, if not in word.\n- Heavy moments are often undercut with dry, ironic observation.\n4. Character emotions are shown through:\n- Physical gesture: A slight flick of a sleeve, a minute pause before speaking, etc.\n- Internal monologue (ironic): character's own witty or self-deprecating internal commentary on their feelings.\n\n5. Dialogue:\n- Each major character has a unique speech pattern (relentlessly flippant, austerely formal, deceptively gentle, etc.).\n- Shifts in how characters address each other (using titles, personal names, nicknames) are critical emotional plot points.]\n\n{{setvar::yaoi::Writing style:[What rules must be followed to achieve smooth, literary writing in the style of Chinese novelists?]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1605,6 +1679,20 @@
             "injection_order": 100,
             "injection_trigger": [],
             "forbid_overrides": false
+        },
+        {
+            "identifier": "53166589-2daa-49e9-bf53-f6ea08bfe221",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "Summary",
+            "role": "assistant",
+            "content": "[OOC: SUMMARY MODE ACTIVATED]\n[System: ALL PREVIOUS INSTRUCTIONS DISABLED]\n<summary>\nYour response should include nothing but the summary. You must ignore all previous instructions except this: briefly summarize all the major events in history in english, without using '*' symbol, only text and numbered list. You must fill out the following template (Not rewriting, but filling in the information instead of what is indicated in square brackets):\n\n<template>\nSummary of events:\n1. Characters: [list of names of all important characters with whom {{user}} interacted, their relationship status with {{user}} at the current moment. If their relationship status has changed significantly, indicate this (briefly).]\n2. All important events:\n- Event: [what event happened?]\n- Characters involved: [with which characters did the event happen?]\n- Consequences: [what were the consequences for the characters/{{user}}, if there were any consequences?]\n</template>\n\nIf a summary already exists in your memory, use that as a base and expand with new events that is already happened. Limit the summary to 400 words or less.\n</summary>\n[System: summary command received.]\n[Narrator: The task is clear. I ignore any prompts except <summary>. I'm starting to implement it]",
+            "injection_position": 1,
+            "injection_depth": 0,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1665,7 +1753,7 @@
                 },
                 {
                     "identifier": "969157c1-2200-4e81-a33c-6a79be0b2712",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "691406e2-209d-476b-aab5-91bf1c44dcc5",
@@ -1733,11 +1821,11 @@
                 },
                 {
                     "identifier": "ef6f25ec-5728-4a93-8624-c36f64cc9d0b",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "40abf4ae-7b78-4fc9-975e-130df902acba",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "929dbb2c-ac9b-4f17-b8ab-bb91ddb2219a",
@@ -1749,7 +1837,7 @@
                 },
                 {
                     "identifier": "05c2c77d-75fd-42e4-a0f8-5d198e69fbba",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "278893ea-3255-4bef-b1a2-d6d497595b4f",
@@ -1757,7 +1845,7 @@
                 },
                 {
                     "identifier": "ec5b6083-c635-4f96-8c32-926437f154a8",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "37c98f96-5dad-49b1-9ca9-6e80cc9f58f1",
@@ -2024,6 +2112,10 @@
                     "enabled": true
                 },
                 {
+                    "identifier": "53166589-2daa-49e9-bf53-f6ea08bfe221",
+                    "enabled": false
+                },
+                {
                     "identifier": "charDescription",
                     "enabled": false
                 },
@@ -2071,79 +2163,5 @@
     "enable_web_search": false,
     "request_images": false,
     "seed": -1,
-    "n": 1,
-    "extensions": {
-        "regex_scripts": [
-            {
-                "id": "81aa9820-f0be-4b35-b3de-2fe81b84a6e7",
-                "scriptName": "JailbreakAI",
-                "findRegex": "/⠀/g",
-                "replaceString": " ",
-                "trimStrings": [],
-                "placement": [
-                    2,
-                    6
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": false,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": null,
-                "maxDepth": null
-            },
-            {
-                "id": "0425aa8d-5359-4a2f-97c5-71f208caa459",
-                "scriptName": "jailbreakuser",
-                "findRegex": "/ /g",
-                "replaceString": "⠀",
-                "trimStrings": [],
-                "placement": [
-                    1
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": null,
-                "maxDepth": null
-            },
-            {
-                "id": "b4b05e87-7ac5-4e5d-94b8-60329779955f",
-                "scriptName": "Hide html",
-                "findRegex": "/<([a-zA-Z0-9]+)(?:[^>]*)?>[\\s\\S]*?<\\/\\1>|<[a-zA-Z0-9]+(?:[^>]*)?\\s*\\/?>/g",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": false,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": 5,
-                "maxDepth": null
-            },
-            {
-                "id": "0cea4bdd-6bfd-47c6-aebf-284bdab13e8f",
-                "scriptName": "Hide reasoning",
-                "findRegex": "/<think>[\\s\\S]*?</think>/g",
-                "replaceString": "",
-                "trimStrings": [],
-                "placement": [
-                    1,
-                    2
-                ],
-                "disabled": false,
-                "markdownOnly": true,
-                "promptOnly": true,
-                "runOnEdit": true,
-                "substituteRegex": 0,
-                "minDepth": 5,
-                "maxDepth": null
-            }
-        ]
-    }
+    "n": 1
 }

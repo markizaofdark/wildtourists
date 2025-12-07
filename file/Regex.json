@@ -1,0 +1,72 @@
+[
+    {
+        "id": "81aa9820-f0be-4b35-b3de-2fe81b84a6e7",
+        "scriptName": "JailbreakAI",
+        "findRegex": "/⠀/g",
+        "replaceString": " ",
+        "trimStrings": [],
+        "placement": [
+            2,
+            6
+        ],
+        "disabled": false,
+        "markdownOnly": true,
+        "promptOnly": false,
+        "runOnEdit": true,
+        "substituteRegex": 0,
+        "minDepth": null,
+        "maxDepth": null
+    },
+    {
+        "id": "0425aa8d-5359-4a2f-97c5-71f208caa459",
+        "scriptName": "jailbreakuser",
+        "findRegex": "/ /g",
+        "replaceString": "⠀",
+        "trimStrings": [],
+        "placement": [
+            1
+        ],
+        "disabled": false,
+        "markdownOnly": false,
+        "promptOnly": true,
+        "runOnEdit": true,
+        "substituteRegex": 0,
+        "minDepth": null,
+        "maxDepth": null
+    },
+    {
+        "id": "b4b05e87-7ac5-4e5d-94b8-60329779955f",
+        "scriptName": "Hide html",
+        "findRegex": "/<([a-zA-Z0-9]+)(?:[^>]*)?>[\\s\\S]*?<\\/\\1>|<[a-zA-Z0-9]+(?:[^>]*)?\\s*\\/?>/g",
+        "replaceString": "",
+        "trimStrings": [],
+        "placement": [
+            2
+        ],
+        "disabled": false,
+        "markdownOnly": false,
+        "promptOnly": true,
+        "runOnEdit": true,
+        "substituteRegex": 0,
+        "minDepth": 5,
+        "maxDepth": null
+    },
+    {
+        "id": "0cea4bdd-6bfd-47c6-aebf-284bdab13e8f",
+        "scriptName": "Hide reasoning",
+        "findRegex": "/<think>[\\s\\S]*?</think>/g",
+        "replaceString": "",
+        "trimStrings": [],
+        "placement": [
+            1,
+            2
+        ],
+        "disabled": false,
+        "markdownOnly": true,
+        "promptOnly": true,
+        "runOnEdit": true,
+        "substituteRegex": 0,
+        "minDepth": 5,
+        "maxDepth": null
+    }
+]
