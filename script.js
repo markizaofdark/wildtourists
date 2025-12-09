@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const memInterval = setInterval(() => {
         totalMem += 1024;
         memCount.innerText = totalMem;
-        if (totalMem >= 65536) clearInterval(memInterval);
+        if (totalMem >= 69696) clearInterval(memInterval);
     }, 20);
 
     addBootLine();
@@ -79,14 +79,15 @@ const logMessages = [
     "Хочу Дотторе...", "Платная гемка...", 
     "Фикс на яйца...", "Качаю логи админа-яойщицы",
     "Генерирую рекламу XOUL...", "Ищу бесплатные прокси...",
-    "Мут минута", "Елена банит ваш аккаунт...", "Дикий турист detected",
-    "Ваши логи залиты в тгк", "Gooning_protocol_enabled", "Фармлю примогемы...",
+    "Мут минута", "Елена банит ваш аккаунт...", "Дикий турист detected...",
+    "Ваши логи залиты в тгк", "Gooning_protocol_enabled...", "Фармлю примогемы...",
     "Сканирую папку D:/Users/porn", "Устанавливаю SillyTavern...",
     "Ах, А-Яо...", "Ах, Цзюнь У...", "Что такое character.ai...",
     "Диск D отформатирован", "Баню двачеров в чате...",
     "Ах, Джину...", "You know I'm the only one who'll love your sins...",
     "I'll be уour idol...", "feel the way my voice gets underneath your skin...",
-    "Покойся с миром, 2.5pro...", "Будем ролить в дипсике...", "Облизываю яблоко🍎..."
+    "Покойся с миром, 2.5pro...", "Будем ролить в дипсике...", "Облизываю яблоко🍎...",
+    "Опять новый фикс...", "Молюсь на Джи...", "Я знаю, что вы делали этой ночью..."
 ];
 
 function addLogEntry(text) {
@@ -98,11 +99,11 @@ function addLogEntry(text) {
     div.style.paddingLeft = "5px";
     div.style.marginBottom = "2px";
     logContainer.prepend(div);
-    if(logContainer.children.length > 5) {
+    if(logContainer.children.length > 12) {
         logContainer.lastChild.remove();
     }
 }
-setInterval(() => addLogEntry(), 2200);
+setInterval(() => addLogEntry(), 1200);
 
 /* =========================================
    3. КОПИРОВАНИЕ
@@ -112,7 +113,7 @@ function copyToClipboard(elementId) {
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById("toast");
         toast.className = "toast show";
-        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 300);
         addLogEntry("БУФЕР ОБМЕНА: ДАННЫЕ ВНЕСЕНЫ");
     });
 }
