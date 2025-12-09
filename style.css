@@ -191,6 +191,7 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; margin-top: auto; }
 
 @media (max-width: 900px) {
+    /* --- СТАРЫЕ СТИЛИ (оставляем как было) --- */
     .cyberdeck { flex-direction: column; }
     .deck-sidebar { width: 100%; }
     .cmd-list { flex-direction: row; flex-wrap: wrap; }
@@ -200,4 +201,55 @@ footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; marg
     .neon-title { font-size: 2.2rem; }
     .cyber-player-ui { flex-direction: column; text-align: center; }
     .player-controls { justify-content: center; }
+
+    /* --- НОВЫЕ СТИЛИ ДЛЯ РАСШИРЕНИЯ --- */
+
+    /* 1. Уменьшаем отступы внутри терминала, чтобы освободить место */
+    .screen-body {
+        padding: 10px; /* Было 30px. Ставим 10px, чтобы контент был ближе к краям */
+    }
+
+    /* 2. Настройки карточки профиля (голубая рамка) */
+    .profile-card {
+        flex-direction: column; /* Текст под фото */
+        align-items: center;    /* Центр фото */
+        gap: 15px;
+        
+        /* Растягиваем на всю ширину */
+        width: auto;            
+        margin-left: -5px;      /* Небольшие отрицательные отступы, */
+        margin-right: -5px;     /* чтобы рамка была еще шире */
+        margin-bottom: 20px;
+    }
+
+    /* 3. Аватарка */
+    .profile-visual {
+        margin-top: -20px;      /* Поднимаем еще выше, чтобы красиво "сидела" на рамке */
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+        background: #000;       /* Чтобы за аватаркой не просвечивала линия рамки */
+        z-index: 2;             /* Чтобы аватарка была поверх рамки */
+    }
+
+    /* 4. Текст */
+    .profile-data {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Улучшение читаемости мета-данных */
+    .meta-data p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .meta-data span {
+        width: auto;
+        color: var(--neon-blue);
+        margin-bottom: 2px;
+    }
 }
+
