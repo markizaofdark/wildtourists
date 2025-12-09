@@ -96,7 +96,7 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 .profile-data { flex: 1; }
 .profile-title { color: #fff; font-family: var(--font-head); font-size: 1.5rem; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
 .meta-data p { color: #888; font-size: 0.9rem; margin-bottom: 5px; }
-.meta-data span { color: var(--neon-blue); font-weight: bold; width: 260px; display: inline-block; }
+.meta-data span { color: var(--neon-blue); font-weight: bold; width: 80px; display: inline-block; }
 .profile-desc { margin-top: 15px; color: #ccc; line-height: 1.5; font-style: italic; border-top: 1px dashed #333; padding-top: 10px; }
 
 /* NEW PLAYER SECTION */
