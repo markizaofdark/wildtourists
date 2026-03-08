@@ -8,10 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const memCount = document.getElementById('mem-count');
     
     const bootLog = [
-        "Инициализирую систему...",
         "Проверяю наличие подписки на канал... [1/1 OK]",
-        "Отслеживаю возможную связь с двачом... [0/1 OK]",
-        "Загружаю систему...",
         "Создаю фикс пресета...",
         "На самом деле это не загрузка...",
         "Мне просто хотелось прикольных анимаций на сайте...",
@@ -76,19 +73,18 @@ function runCommand(tabName) {
    ========================================= */
 const logContainer = document.getElementById('traffic-log');
 const logMessages = [
-    "Хочу Дотторе...", "Платная гемка...", 
+    "Хочу Дотторе...", "Ах, Шино...", "Ах, Астера...",
     "Фикс на яйца...", "Качаю логи админа-яойщицы",
     "Генерирую рекламу XOUL...", "Ищу бесплатные прокси...",
-    "Мут минута", "Елена банит ваш аккаунт...", "Дикий турист detected...",
-    "Ваши логи залиты в тгк", "Gooning_protocol_enabled...", "Фармлю примогемы...",
-    "Сканирую папку D:/Users/porn", "Устанавливаю SillyTavern...",
+    "Мут минута", "Елена банит ваш аккаунт...",
+    "Ваши логи залиты в тгк",
+    "Сканирую папку D:/Users/porn",
     "Ах, А-Яо...", "Ах, Цзюнь У...", "Что такое character.ai...",
-    "Диск D отформатирован", "Баню двачеров в чате...",
+    "Баню двачеров в чате...",
     "Ах, Джину...", "You know I'm the only one who'll love your sins...",
     "I'll be уour idol...", "feel the way my voice gets underneath your skin...",
-    "Покойся с миром, 2.5pro...", "Будем ролить в дипсике...", "Облизываю яблоко🍎...",
-    "Опять новый фикс...", "Молюсь на Джи...", "Я знаю, что вы делали этой ночью...",
-    "Рисую в тгк...", "Агрессивно даю варн...", "Ах, вайбкодинг..."
+    "Облизываю яблоко🍎...",
+    "Рисую в тгк...", "Ах, вайбкодинг..."
 ];
 
 function addLogEntry(text) {
@@ -243,8 +239,6 @@ function forceDownload(url, fileName) {
         });
 }
 
-
-
 /* =========================================
    7. АУДИО ПЛЕЕР
    ========================================= */
@@ -261,15 +255,19 @@ function toggleMusic() {
         audio.play();
         playerUI.classList.add('playing');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-        statusText.innerText = "ВОСПРОИЗВЕДЕНИЕ...";
-        statusText.style.color = "var(--neon-green)";
-        addLogEntry("АУДИО: НАЧАЧЛО ВОСПРОИЗВЕДЕНИЯ");
+        if(statusText) {
+            statusText.innerText = "ВОСПРОИЗВЕДЕНИЕ...";
+            statusText.style.color = "var(--neon-green)";
+        }
+        addLogEntry("АУДИО: НАЧАЛО ВОСПРОИЗВЕДЕНИЯ");
     } else {
         audio.pause();
         playerUI.classList.remove('playing');
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        statusText.innerText = "ПАУЗА";
-        statusText.style.color = "orange";
+        if(statusText) {
+            statusText.innerText = "ПАУЗА";
+            statusText.style.color = "orange";
+        }
         addLogEntry("АУДИО: Приостановлено");
     }
 }
@@ -289,7 +287,7 @@ if(audio) {
         playerUI.classList.remove('playing');
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         progressBar.style.width = '0%';
-        statusText.innerText = "ЗАВЕРШЕНО";
+        if(statusText) statusText.innerText = "ЗАВЕРШЕНО";
     });
 }
 
@@ -298,3 +296,409 @@ function formatTime(seconds) {
     const sec = Math.floor(seconds % 60);
     return `${min}:${sec < 10 ? '0' : ''}${sec}`;
 }
+
+/* =========================================
+   8. ЛОГИКА ГАЙДА (СКРОЛЛ И ПОДСВЕТКА)
+   ========================================= */
+
+// Открытие изображения в полноэкранном режиме
+function openFullscreen(img) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.95);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        cursor: pointer;
+    `;
+    
+    const fullImg = document.createElement('img');
+    fullImg.src = img.src;
+    fullImg.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);
+        border: 1px solid var(--neon-blue);
+    `;
+    
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '×';
+    closeBtn.style.cssText = `
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 50px;
+        color: var(--neon-pink);
+        cursor: pointer;
+        transition: 0.3s;
+    `;
+    
+    closeBtn.onmouseover = () => { closeBtn.style.transform = 'scale(1.2)'; };
+    closeBtn.onmouseout = () => { closeBtn.style.transform = 'scale(1)'; };
+    
+    overlay.appendChild(fullImg);
+    overlay.appendChild(closeBtn);
+    document.body.appendChild(overlay);
+    
+    overlay.onclick = () => {
+        overlay.remove();
+        addLogEntry("ПРОСМОТР: ИЗОБРАЖЕНИЕ ЗАКРЫТО");
+    };
+    
+    addLogEntry("ПРОСМОТР: ПОЛНОЭКРАННЫЙ РЕЖИМ");
+}
+
+// Плавная прокрутка к началу страницы (железобетонный метод)
+function scrollToTop() {
+    const screenBody = document.querySelector('.screen-body');
+    if (screenBody) {
+        // Устанавливаем прокрутку в 0. CSS свойство scroll-behavior: smooth сделает это плавно
+        screenBody.scrollTop = 0;
+    }
+    addLogEntry("НАВИГАЦИЯ: ВОЗВРАТ К НАЧАЛУ");
+}
+
+// Плавная прокрутка к якорям и подсветка
+document.addEventListener('DOMContentLoaded', () => {
+    const tocItems = document.querySelectorAll('.toc-item');
+    
+    tocItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = item.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Скроллим так, чтобы элемент оказался посередине экрана
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center' 
+                });
+
+                // Перезапускаем анимацию подсветки
+                targetElement.classList.remove('highlight-target');
+                void targetElement.offsetWidth; // Магия для перезапуска CSS-анимации
+                targetElement.classList.add('highlight-target');
+                
+                addLogEntry(`НАВИГАЦИЯ: ПЕРЕХОД К ${targetId.toUpperCase()}`);
+            }
+        });
+    });
+});
+
+/* =========================================
+   9. УБЕГАЮЩАЯ ССЫЛКА С КРЫЛЬЯМИ И НОГАМИ
+   ========================================= */
+(function() {
+    const runawayEl = document.getElementById('runaway-link');
+    const runawayBox = document.getElementById('runaway-box');
+    if (!runawayEl || !runawayBox) return;
+
+    let activated = false;
+    let posX = 0, posY = 10;
+    let velX = 0, velY = 0;
+    let animFrame = null;
+    let sweatInterval = null;
+    let wanderInterval = null;
+    let mouseX = -9999, mouseY = -9999;
+    let lastJumpTime = 0;
+    let panicTimeout = null;
+
+    const clones = [];
+
+    // ======== АКТИВАЦИЯ ========
+    runawayBox.addEventListener('click', function(e) {
+        if (!activated) {
+            e.preventDefault();
+            e.stopPropagation();
+            activated = true;
+            runawayEl.classList.add('activated');
+
+            const alertEl = document.createElement('span');
+            alertEl.className = 'runaway-alert';
+            alertEl.innerText = '❗';
+            runawayEl.appendChild(alertEl);
+            setTimeout(() => alertEl.remove(), 800);
+
+            addLogEntry("ССЫЛКА: КРЫЛЬЯ РАСПРАВЛЕНЫ, ПОБЕГ АКТИВИРОВАН!");
+
+            setTimeout(() => {
+                const rect = runawayEl.getBoundingClientRect();
+                posX = rect.left;
+                posY = rect.top;
+
+                document.body.appendChild(runawayEl);
+                runawayEl.style.position = 'fixed';
+                runawayEl.style.left = posX + 'px';
+                runawayEl.style.top = posY + 'px';
+                runawayEl.style.zIndex = '99999';
+
+                velX = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 10);
+                velY = (Math.random() > 0.5 ? 1 : -1) * (5 + Math.random() * 8);
+                runawayEl.classList.add('running');
+                sweatInterval = setInterval(spawnSweat, 300);
+                animFrame = requestAnimationFrame(animate);
+                startWandering();
+            }, 400);
+            return;
+        }
+
+        // Попытка поимки — СПАВН КЛОНОВ
+        e.preventDefault();
+        e.stopPropagation();
+
+        const cloneCount = 8 + Math.floor(Math.random() * 5); 
+        addLogEntry(`ССЫЛКА: КРИТИЧЕСКИЙ СТРАХ! МИТОЗ × ${cloneCount} КОПИЙ!`);
+
+        spawnClones(cloneCount);
+        spawnFeathers();
+        spawnFeathers(); 
+
+        velX += (Math.random() - 0.5) * 40;
+        velY += (Math.random() - 0.5) * 40;
+        clampSpeed();
+        triggerPanic();
+        triggerJump();
+    });
+
+    // ======== СПАВН КЛОНОВ ========
+    function spawnClones(count) {
+        for (let i = 0; i < count; i++) {
+            const clone = createCloneElement();
+            document.body.appendChild(clone.el);
+
+            clone.x = posX + (Math.random() - 0.5) * 30;
+            clone.y = posY + (Math.random() - 0.5) * 30;
+
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 20 + Math.random() * 24; 
+            clone.vx = Math.cos(angle) * speed;
+            clone.vy = Math.sin(angle) * speed;
+
+            clone.el.style.left = clone.x + 'px';
+            clone.el.style.top = clone.y + 'px';
+
+            clones.push(clone);
+
+            const lifespan = 5000 + Math.random() * 3000;
+            setTimeout(() => {
+                clone.el.classList.add('fading');
+                setTimeout(() => {
+                    clone.el.remove();
+                    const idx = clones.indexOf(clone);
+                    if (idx > -1) clones.splice(idx, 1);
+                }, 1000);
+            }, lifespan);
+        }
+    }
+
+    function createCloneElement() {
+        const el = document.createElement('div');
+        el.className = 'runaway-clone';
+        el.innerHTML = `
+            <div class="runaway-eyes">😱</div>
+            <div class="runaway-body">
+                <div class="wing wing-left">
+                    <div class="wing-shape">
+                        <div class="wing-primary"></div>
+                        <div class="wing-membrane"></div>
+                        <div class="wing-veins"></div>
+                    </div>
+                </div>
+                <div class="runaway-box">
+                    <i class="fa-solid fa-skull-crossbones"></i>
+                    <span>КУДА ТЫКАЕШЬ?!</span>
+                </div>
+                <div class="wing wing-right">
+                    <div class="wing-shape">
+                        <div class="wing-primary"></div>
+                        <div class="wing-membrane"></div>
+                        <div class="wing-veins"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="legs-container" style="opacity:1;">
+                <div class="leg left-leg">
+                    <div class="thigh"></div>
+                    <div class="shin"></div>
+                    <div class="foot"></div>
+                </div>
+                <div class="leg right-leg">
+                    <div class="thigh"></div>
+                    <div class="shin"></div>
+                    <div class="foot"></div>
+                </div>
+            </div>
+        `;
+        el.style.position = 'fixed';
+        el.style.zIndex = '99990';
+        return { el, x: 0, y: 0, vx: 0, vy: 0 };
+    }
+
+    // ======== ФИЗИКА КЛОНОВ ========
+    function animateClones() {
+        const screenW = window.innerWidth;
+        const screenH = window.innerHeight;
+
+        for (const c of clones) {
+            const cx = c.x + 60, cy = c.y + 30;
+            const dx = cx - mouseX, dy = cy - mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 180 && dist > 0) {
+                c.vx += (dx / dist) * 5;
+                c.vy += (dy / dist) * 5;
+            }
+
+            if (Math.random() < 0.03) {
+                const a = Math.random() * Math.PI * 2;
+                c.vx += Math.cos(a) * 8;
+                c.vy += Math.sin(a) * 8;
+            }
+
+            c.x += c.vx;
+            c.y += c.vy;
+            c.vx *= 0.95;
+            c.vy *= 0.95;
+
+            const maxSpd = 40;
+            const spd = Math.sqrt(c.vx * c.vx + c.vy * c.vy);
+            if (spd > maxSpd) { c.vx = (c.vx / spd) * maxSpd; c.vy = (c.vy / spd) * maxSpd; }
+
+            const w = c.el.offsetWidth || 120, h = c.el.offsetHeight || 60;
+            if (c.x < 5) { c.x = 5; c.vx = Math.abs(c.vx) * 0.8 + 3; }
+            if (c.x > screenW - w - 5) { c.x = screenW - w - 5; c.vx = -Math.abs(c.vx) * 0.8 - 3; }
+            if (c.y < 5) { c.y = 5; c.vy = Math.abs(c.vy) * 0.8 + 3; }
+            if (c.y > screenH - h - 5) { c.y = screenH - h - 5; c.vy = -Math.abs(c.vy) * 0.8 - 3; }
+
+            const tilt = Math.min(Math.max(c.vx * 3, -40), 40);
+            c.el.style.left = c.x + 'px';
+            c.el.style.top = c.y + 'px';
+            c.el.style.transform = `rotate(${tilt}deg)`;
+        }
+    }
+
+    // ======== РАНДОМНОЕ БЛУЖДАНИЕ ОРИГИНАЛА ========
+    function startWandering() {
+        function wander() {
+            if (!activated) return;
+            const angle = Math.random() * Math.PI * 2;
+            const force = 4 + Math.random() * 8;
+            velX += Math.cos(angle) * force;
+            velY += Math.sin(angle) * force;
+            clampSpeed();
+            wanderInterval = setTimeout(wander, 800 + Math.random() * 1700);
+        }
+        wanderInterval = setTimeout(wander, 1000);
+    }
+
+    function clampSpeed() {
+        const maxSpeed = 22;
+        const spd = Math.sqrt(velX * velX + velY * velY);
+        if (spd > maxSpeed) { velX = (velX / spd) * maxSpeed; velY = (velY / spd) * maxSpeed; }
+    }
+
+    function triggerPanic() {
+        runawayEl.classList.add('panicking');
+        clearTimeout(panicTimeout);
+        panicTimeout = setTimeout(() => runawayEl.classList.remove('panicking'), 2500);
+    }
+
+    function triggerJump() {
+        const now = Date.now();
+        if (now - lastJumpTime < 400) return;
+        lastJumpTime = now;
+        runawayEl.classList.remove('jumping');
+        void runawayEl.offsetWidth;
+        runawayEl.classList.add('jumping');
+        setTimeout(() => runawayEl.classList.remove('jumping'), 350);
+    }
+
+    function spawnFeathers() {
+        const items = ['💷', '💶', '⚓️', '💴', '💴', '💵'];
+        for (const txt of items) {
+            const f = document.createElement('span');
+            f.className = 'feather';
+            f.innerText = txt;
+            f.style.left = (posX + (Math.random() - 0.5) * 60) + 'px';
+            f.style.top = (posY + (Math.random() - 0.5) * 30) + 'px';
+            f.style.setProperty('--fx', (Math.random() - 0.5) * 120 + 'px');
+            f.style.setProperty('--fr', Math.random() * 360 + 'deg');
+            document.body.appendChild(f);
+            setTimeout(() => f.remove(), 1500);
+        }
+    }
+
+    function spawnSweat() {
+        const drop = document.createElement('span');
+        drop.className = 'sweat-drop';
+        drop.style.position = 'fixed';
+        drop.innerText = Math.random() > 0.5 ? '💧' : '💦';
+        drop.style.left = (posX + runawayEl.offsetWidth / 2 + (Math.random() - 0.5) * 20) + 'px';
+        drop.style.top = (posY + 5) + 'px';
+        drop.style.zIndex = '99998';
+        document.body.appendChild(drop);
+        setTimeout(() => drop.remove(), 700);
+    }
+
+    // ======== ОСНОВНОЙ ЦИКЛ АНИМАЦИИ ========
+    function animate() {
+        const screenW = window.innerWidth;
+        const screenH = window.innerHeight;
+        const elW = runawayEl.offsetWidth || 200;
+        const elH = runawayEl.offsetHeight || 80;
+
+        const elCX = posX + elW / 2, elCY = posY + elH / 2;
+        const dx = elCX - mouseX, dy = elCY - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 220 && dist > 0) {
+            triggerPanic();
+            triggerJump();
+            velX += (dx / dist) * 7 * 0.35;
+            velY += (dy / dist) * 7 * 0.35;
+            clampSpeed();
+            if (dist < 120 && Math.random() > 0.85) spawnFeathers();
+        }
+
+        posX += velX;
+        posY += velY;
+        velX *= 0.96;
+        velY *= 0.96;
+
+        const m = 5;
+        if (posX < m) { posX = m; velX = Math.abs(velX) * 0.8 + 2; }
+        if (posX > screenW - elW - m) { posX = screenW - elW - m; velX = -Math.abs(velX) * 0.8 - 2; }
+        if (posY < m) { posY = m; velY = Math.abs(velY) * 0.8 + 2; }
+        if (posY > screenH - elH - m) { posY = screenH - elH - m; velY = -Math.abs(velY) * 0.8 - 2; }
+
+        const tilt = Math.min(Math.max(velX * 2.5, -35), 35);
+        runawayEl.style.left = posX + 'px';
+        runawayEl.style.top = posY + 'px';
+        runawayEl.style.transform = `rotate(${tilt}deg)`;
+
+        animateClones();
+
+        animFrame = requestAnimationFrame(animate);
+    }
+
+    // ======== МЫШЬ ========
+    document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+    document.addEventListener('touchmove', (e) => {
+        const t = e.touches[0];
+        if (t) { mouseX = t.clientX; mouseY = t.clientY; }
+    }, { passive: true });
+    document.addEventListener('touchend', () => { mouseX = -9999; mouseY = -9999; });
+
+    window.addEventListener('resize', () => {
+        if (!activated) return;
+        if (posX > window.innerWidth - 200) posX = window.innerWidth - 200;
+        if (posY > window.innerHeight - 80) posY = window.innerHeight - 80;
+    });
+})();

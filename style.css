@@ -33,7 +33,7 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 /* ФОН */
 #cyber-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; background: #000; }
 .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.3) 3px, rgba(0,0,0,0.3) 4px); pointer-events: none; z-index: 900; opacity: 0.4; }
-.noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.05; z-index: 899; pointer-events: none; }
+.noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('{{https://grainy-gradients.vercel.app/noise.svg}}'); opacity: 0.05; z-index: 899; pointer-events: none; }
 
 /* UI */
 .main-interface { width: 95%; max-width: 1400px; margin: 0 auto; padding: 20px 0; flex: 1; display: flex; flex-direction: column; z-index: 10; }
@@ -81,7 +81,7 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 .screen-header { background: rgba(255,255,255,0.03); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); color: #666; font-size: 0.8rem; }
 .path-display i { margin-right: 8px; color: var(--neon-pink); }
 .win-controls { display: flex; gap: 10px; font-family: sans-serif; cursor: pointer; }
-.screen-body { padding: 30px; flex: 1; overflow-y: auto; background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 20px 20px; }
+.screen-body { padding: 30px; flex: 1; overflow-y: auto; background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px); background-size: 20px 20px; scroll-behavior: smooth; }
 
 /* CONTENT */
 .tab-content { display: none; }
@@ -134,12 +134,14 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 .cyber-folder[open] summary { border-bottom: 1px solid var(--neon-blue); color: var(--neon-blue); }
 .badge { font-size: 0.7rem; padding: 2px 6px; border: 1px solid #444; }
 .badge.red { color: var(--neon-pink); border-color: var(--neon-pink); }
+.badge.yellow { color: rgb(206, 215, 34); border-color: rgb(206, 215, 34); }
 .folder-content { padding: 15px; }
 .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
 .data-cell { background: rgba(0,0,0,0.4); border: 1px solid #333; padding: 15px; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden; }
 .data-cell:hover { border-color: var(--neon-green); background: rgba(10, 255, 10, 0.05); }
 .data-cell.warning:hover { border-color: orange; background: rgba(255, 165, 0, 0.05); }
 .data-cell.pink:hover { border-color: var(--neon-pink); background: rgba(255, 0, 85, 0.05); }
+.data-cell.yellow:hover { border-color: rgb(206, 215, 34); background: rgba(255, 243, 9, 0.05); }
 .cell-head { font-weight: bold; margin-bottom: 5px; color: #ddd; font-family: var(--font-head); font-size: 0.8rem; }
 .cell-desc { font-size: 0.7rem; color: #777; line-height: 1.3; height: 3.6em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 
@@ -174,6 +176,193 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 .player-bar { height: 4px; border: none; background: #333; margin-bottom: 5px; }
 .time-codes { display: flex; justify-content: space-between; font-size: 0.7rem; color: #666; }
 
+/* НОВЫЕ СТИЛИ ДЛЯ ГАЙДА */
+/* Оглавление */
+.guide-toc {
+    background: rgba(0, 243, 255, 0.02);
+    border: 1px solid var(--neon-blue);
+    padding: 20px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.guide-toc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+}
+
+.toc-header {
+    font-size: 1rem;
+    color: var(--neon-blue);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-head);
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-item:hover {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    background: rgba(255, 0, 85, 0.05);
+    transform: translateX(5px);
+}
+
+.toc-number {
+    color: var(--neon-blue);
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.toc-title {
+    font-size: 0.9rem;
+}
+
+/* Галерея изображений - ПЛИТОЧНАЯ РАСКЛАДКА (Masonry) */
+.guide-gallery {
+    column-count: 2; /* Две колонки на ПК */
+    column-gap: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Для очень широких экранов делаем 3 колонки */
+@media (min-width: 1400px) {
+    .guide-gallery {
+        column-count: 3;
+    }
+}
+
+.guide-item {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #333;
+    transition: 0.3s;
+    position: relative;
+    scroll-margin-top: 100px;
+    
+    /* Секретный соус плиточной раскладки */
+    break-inside: avoid; /* Не дает карточке разорваться между колонками */
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px; /* Отступ вниз вместо gap */
+}
+
+.guide-item:hover {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.guide-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    display: block;
+}
+
+.guide-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.guide-item:hover .guide-image {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 243, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.guide-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-overlay i {
+    font-size: 2rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.guide-caption {
+    padding: 20px;
+}
+
+.caption-number {
+    color: var(--neon-pink);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.caption-title {
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    margin: 10px 0;
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+}
+
+.caption-desc {
+    color: #aaa;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Подсветка при переходе по якорю */
+@keyframes targetHighlight {
+    0% { box-shadow: 0 0 0px transparent; border-color: #333; background: rgba(0,0,0,0.5); }
+    15% { box-shadow: 0 0 40px var(--neon-blue); border-color: var(--neon-blue); background: rgba(0, 243, 255, 0.15); }
+    70% { box-shadow: 0 0 40px var(--neon-blue); border-color: var(--neon-blue); background: rgba(0, 243, 255, 0.15); }
+    100% { box-shadow: 0 0 0px transparent; border-color: #333; background: rgba(0,0,0,0.5); }
+}
+
+.highlight-target {
+    animation: targetHighlight 2.5s ease-out;
+    z-index: 10;
+}
+
 /* TOAST */
 .toast { visibility: hidden; position: fixed; bottom: 30px; right: 30px; background: var(--neon-pink); color: #fff; padding: 12px 25px; font-family: var(--font-head); box-shadow: 0 0 15px var(--neon-pink); z-index: 2000; }
 .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
@@ -190,6 +379,584 @@ body { background-color: var(--bg-core); color: #eee; font-family: var(--font-te
 
 footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; margin-top: auto; }
 
+/* =========================================
+   БЛОК ССЫЛОК НА ВКЛАДКЕ DATABASE
+   ========================================= */
+.links-section {
+    margin-top: 30px;
+}
+
+.links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Заголовок и описание ссылки — вынесены наружу */
+.link-entry {
+    position: relative;
+}
+
+.link-entry-title {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--neon-blue);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+}
+
+.link-entry-title i {
+    margin-right: 8px;
+    color: var(--neon-pink);
+}
+
+.link-entry-desc {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    display: block;
+}
+
+.link-entry-desc-clickable {
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.link-entry-desc-clickable:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px rgba(255, 0, 85, 0.3);
+}
+
+/* Компактный блок-ссылка (обычный) */
+.cyber-link-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid #444;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #ccc;
+    font-size: 0.85rem;
+    font-family: var(--font-term);
+    transition: 0.3s;
+}
+
+.cyber-link-box.normal:hover {
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.cyber-link-box i {
+    font-size: 0.75rem;
+}
+
+/* =========================================
+   УБЕГАЮЩАЯ ССЫЛКА
+   ========================================= */
+.runaway-zone {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    overflow: visible;
+}
+
+.runaway-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 100;
+    cursor: pointer;
+    transition: none;
+    user-select: none;
+}
+
+/* Сам блок */
+.runaway-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid var(--neon-pink);
+    padding: 10px 18px;
+    color: var(--neon-pink);
+    font-size: 0.85rem;
+    font-family: var(--font-term);
+    text-shadow: 0 0 5px var(--neon-pink);
+    white-space: nowrap;
+    position: relative;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.runaway-box:hover {
+    background: rgba(255, 0, 85, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+}
+
+/* Состояние ДО активации — спокойный */
+.runaway-link:not(.activated) .runaway-box {
+    cursor: pointer;
+}
+
+/* Глазки — скрыты до активации */
+.runaway-eyes {
+    font-size: 0.9rem;
+    margin-bottom: -4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    position: relative;
+    z-index: 3;
+}
+
+.runaway-link.activated .runaway-eyes {
+    opacity: 1;
+}
+
+/* Ноги — скрыты до активации */
+.legs-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    height: 36px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.runaway-link.activated .legs-container {
+    opacity: 1;
+}
+
+.leg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+}
+
+.thigh {
+    width: 4px;
+    height: 12px;
+    background: var(--neon-pink);
+    border-radius: 2px;
+}
+
+.shin {
+    width: 3px;
+    height: 10px;
+    background: var(--neon-blue);
+    border-radius: 2px;
+}
+
+.foot {
+    width: 10px;
+    height: 4px;
+    background: var(--neon-green);
+    border-radius: 2px;
+}
+
+/* Анимация бега ног — только при running */
+.runaway-link.running .left-leg {
+    animation: legRunLeft 0.25s ease-in-out infinite;
+}
+
+.runaway-link.running .right-leg {
+    animation: legRunRight 0.25s ease-in-out infinite;
+}
+
+@keyframes legRunLeft {
+    0%   { transform: rotate(-35deg); }
+    50%  { transform: rotate(35deg); }
+    100% { transform: rotate(-35deg); }
+}
+
+@keyframes legRunRight {
+    0%   { transform: rotate(35deg); }
+    50%  { transform: rotate(-35deg); }
+    100% { transform: rotate(35deg); }
+}
+
+.sweat-drop {
+    position: fixed;
+    font-size: 0.7rem;
+    pointer-events: none;
+    animation: sweatFall 0.7s ease-out forwards;
+    z-index: 99998;
+}
+
+@keyframes sweatFall {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(-15px, 25px) scale(0.5); }
+}
+
+/* Восклицательный знак при первом клике */
+.runaway-alert {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+    pointer-events: none;
+    animation: alertPop 0.8s ease-out forwards;
+    z-index: 200;
+}
+
+@keyframes alertPop {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(0) scale(0.5); }
+    30%  { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1.3); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(0.8); }
+}
+
+/* =========================================
+   КРЫЛЬЯ (реалистичная форма, огромные)
+   ========================================= */
+.runaway-body {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.wing {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.runaway-link.activated .wing {
+    opacity: 1;
+}
+
+.wing-left {
+    right: 100%;
+    margin-right: -6px;
+    transform-origin: right center;
+}
+
+.wing-right {
+    left: 100%;
+    margin-left: -6px;
+    transform-origin: left center;
+}
+
+/* SVG-крылья — форма через clip-path */
+.wing-shape {
+    position: relative;
+}
+
+/* Левое крыло */
+.wing-left .wing-shape {
+    width: 110px;
+    height: 100px;
+}
+
+.wing-left .wing-primary {
+    position: absolute;
+    width: 110px;
+    height: 100px;
+    background: linear-gradient(150deg, rgba(0, 243, 255, 0.5), rgba(255, 0, 85, 0.3), rgba(0, 243, 255, 0.1));
+    clip-path: polygon(
+        100% 30%,
+        95% 15%,
+        80% 5%,
+        60% 0%,
+        35% 2%,
+        15% 10%,
+        5% 22%,
+        0% 38%,
+        2% 50%,
+        8% 60%,
+        20% 72%,
+        40% 82%,
+        55% 88%,
+        70% 92%,
+        85% 95%,
+        100% 70%
+    );
+    border-right: 2px solid rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(255, 0, 85, 0.15);
+}
+
+.wing-left .wing-membrane {
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    top: 12px;
+    left: 15px;
+    background: linear-gradient(140deg, rgba(255, 0, 85, 0.25), rgba(0, 243, 255, 0.15));
+    clip-path: polygon(
+        100% 25%,
+        85% 10%,
+        60% 3%,
+        35% 8%,
+        15% 20%,
+        5% 38%,
+        10% 55%,
+        25% 70%,
+        50% 82%,
+        75% 88%,
+        100% 65%
+    );
+    box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+/* Жилки крыла */
+.wing-left .wing-veins {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background:
+        linear-gradient(160deg, transparent 40%, rgba(0, 243, 255, 0.3) 40.5%, transparent 41%),
+        linear-gradient(140deg, transparent 55%, rgba(255, 0, 85, 0.2) 55.5%, transparent 56%),
+        linear-gradient(170deg, transparent 25%, rgba(0, 243, 255, 0.15) 25.5%, transparent 26%),
+        linear-gradient(130deg, transparent 70%, rgba(0, 243, 255, 0.2) 70.5%, transparent 71%);
+    clip-path: polygon(
+        100% 30%, 95% 15%, 80% 5%, 60% 0%, 35% 2%, 15% 10%, 5% 22%,
+        0% 38%, 2% 50%, 8% 60%, 20% 72%, 40% 82%, 55% 88%,
+        70% 92%, 85% 95%, 100% 70%
+    );
+}
+
+/* Правое крыло (зеркало) */
+.wing-right .wing-shape {
+    width: 110px;
+    height: 100px;
+}
+
+.wing-right .wing-primary {
+    position: absolute;
+    width: 110px;
+    height: 100px;
+    background: linear-gradient(210deg, rgba(0, 243, 255, 0.5), rgba(255, 0, 85, 0.3), rgba(0, 243, 255, 0.1));
+    clip-path: polygon(
+        0% 30%,
+        5% 15%,
+        20% 5%,
+        40% 0%,
+        65% 2%,
+        85% 10%,
+        95% 22%,
+        100% 38%,
+        98% 50%,
+        92% 60%,
+        80% 72%,
+        60% 82%,
+        45% 88%,
+        30% 92%,
+        15% 95%,
+        0% 70%
+    );
+    border-left: 2px solid rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(255, 0, 85, 0.15);
+}
+
+.wing-right .wing-membrane {
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    top: 12px;
+    right: 15px;
+    background: linear-gradient(220deg, rgba(255, 0, 85, 0.25), rgba(0, 243, 255, 0.15));
+    clip-path: polygon(
+        0% 25%,
+        15% 10%,
+        40% 3%,
+        65% 8%,
+        85% 20%,
+        95% 38%,
+        90% 55%,
+        75% 70%,
+        50% 82%,
+        25% 88%,
+        0% 65%
+    );
+    box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.wing-right .wing-veins {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background:
+        linear-gradient(200deg, transparent 40%, rgba(0, 243, 255, 0.3) 40.5%, transparent 41%),
+        linear-gradient(220deg, transparent 55%, rgba(255, 0, 85, 0.2) 55.5%, transparent 56%),
+        linear-gradient(190deg, transparent 25%, rgba(0, 243, 255, 0.15) 25.5%, transparent 26%),
+        linear-gradient(230deg, transparent 70%, rgba(0, 243, 255, 0.2) 70.5%, transparent 71%);
+    clip-path: polygon(
+        0% 30%, 5% 15%, 20% 5%, 40% 0%, 65% 2%, 85% 10%, 95% 22%,
+        100% 38%, 98% 50%, 92% 60%, 80% 72%, 60% 82%, 45% 88%,
+        30% 92%, 15% 95%, 0% 70%
+    );
+}
+
+/* Анимации крыльев — холостые */
+.runaway-link.activated .wing-left {
+    animation: flapLeft 1.2s ease-in-out infinite;
+}
+
+.runaway-link.activated .wing-right {
+    animation: flapRight 1.2s ease-in-out infinite;
+}
+
+/* Анимации крыльев — ПАНИКА */
+.runaway-link.panicking .wing-left {
+    animation: flapLeftPanic 0.15s ease-in-out infinite !important;
+}
+
+.runaway-link.panicking .wing-right {
+    animation: flapRightPanic 0.15s ease-in-out infinite !important;
+}
+
+@keyframes flapLeft {
+    0%   { transform: translateY(-50%) scaleX(1) rotateZ(0deg); }
+    25%  { transform: translateY(-50%) scaleX(0.3) rotateZ(-20deg); }
+    50%  { transform: translateY(-50%) scaleX(1) rotateZ(5deg); }
+    75%  { transform: translateY(-50%) scaleX(0.5) rotateZ(-10deg); }
+    100% { transform: translateY(-50%) scaleX(1) rotateZ(0deg); }
+}
+
+@keyframes flapRight {
+    0%   { transform: translateY(-50%) scaleX(1) rotateZ(0deg); }
+    25%  { transform: translateY(-50%) scaleX(0.3) rotateZ(20deg); }
+    50%  { transform: translateY(-50%) scaleX(1) rotateZ(-5deg); }
+    75%  { transform: translateY(-50%) scaleX(0.5) rotateZ(10deg); }
+    100% { transform: translateY(-50%) scaleX(1) rotateZ(0deg); }
+}
+
+@keyframes flapLeftPanic {
+    0%   { transform: translateY(-50%) scaleX(1) rotateZ(10deg); }
+    50%  { transform: translateY(-50%) scaleX(0.15) rotateZ(-30deg); }
+    100% { transform: translateY(-50%) scaleX(1) rotateZ(10deg); }
+}
+
+@keyframes flapRightPanic {
+    0%   { transform: translateY(-50%) scaleX(1) rotateZ(-10deg); }
+    50%  { transform: translateY(-50%) scaleX(0.15) rotateZ(30deg); }
+    100% { transform: translateY(-50%) scaleX(1) rotateZ(-10deg); }
+}
+
+/* =========================================
+   КОПИИ-КЛОНЫ
+   ========================================= */
+.runaway-clone {
+    position: fixed;
+    z-index: 99990;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.runaway-clone .runaway-box {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    opacity: 0.7;
+}
+
+.runaway-clone .wing {
+    opacity: 0.5;
+}
+
+.runaway-clone .wing-left .wing-shape,
+.runaway-clone .wing-right .wing-shape,
+.runaway-clone .wing-left .wing-primary,
+.runaway-clone .wing-right .wing-primary {
+    width: 70px;
+    height: 65px;
+}
+
+.runaway-clone .wing-left .wing-membrane,
+.runaway-clone .wing-right .wing-membrane {
+    width: 50px;
+    height: 45px;
+}
+
+.runaway-clone .legs-container {
+    opacity: 0.6;
+    height: 25px;
+}
+
+.runaway-clone .thigh { height: 8px; width: 3px; }
+.runaway-clone .shin { height: 7px; width: 2px; }
+.runaway-clone .foot { width: 7px; height: 3px; }
+
+.runaway-clone .runaway-eyes {
+    font-size: 0.6rem;
+    opacity: 0.7;
+}
+
+.runaway-clone .left-leg {
+    animation: legRunLeft 0.2s ease-in-out infinite;
+}
+
+.runaway-clone .right-leg {
+    animation: legRunRight 0.2s ease-in-out infinite;
+}
+
+.runaway-clone .wing-left {
+    animation: flapLeftPanic 0.2s ease-in-out infinite;
+}
+
+.runaway-clone .wing-right {
+    animation: flapRightPanic 0.2s ease-in-out infinite;
+}
+
+/* Клоны постепенно исчезают */
+.runaway-clone.fading {
+    transition: opacity 1s ease-out;
+    opacity: 0 !important;
+}
+
+/* =========================================
+   ПРЫЖКИ (когда курсор рядом)
+   ========================================= */
+.runaway-link.jumping {
+    animation: jumpBounce 0.35s ease-out;
+}
+
+@keyframes jumpBounce {
+    0%   { margin-top: 0; }
+    30%  { margin-top: -40px; }
+    50%  { margin-top: -45px; }
+    75%  { margin-top: -10px; }
+    100% { margin-top: 0; }
+}
+
+/* Перья при панике */
+.feather {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1rem;
+    z-index: 99997;
+    animation: featherFall 1.5s ease-out forwards;
+}
+
+@keyframes featherFall {
+    0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+    100% { opacity: 0; transform: translate(var(--fx), 80px) rotate(var(--fr)) scale(0.3); }
+}
+
 @media (max-width: 900px) {
     /* --- СТАРЫЕ СТИЛИ (оставляем как было) --- */
     .cyberdeck { flex-direction: column; }
@@ -201,44 +968,40 @@ footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; marg
     .neon-title { font-size: 2.2rem; }
     .cyber-player-ui { flex-direction: column; text-align: center; }
     .player-controls { justify-content: center; }
-
-    /* --- НОВЫЕ СТИЛИ ДЛЯ РАСШИРЕНИЯ --- */
-
-    /* 1. Уменьшаем отступы внутри терминала, чтобы освободить место */
-    .screen-body {
-        padding: 10px; /* Было 30px. Ставим 10px, чтобы контент был ближе к краям */
+   
+    .runaway-zone {
+        height: 100px;
     }
 
-    /* 2. Настройки карточки профиля (голубая рамка) */
+    /* --- НОВЫЕ СТИЛИ ДЛЯ РАСШИРЕНИЯ --- */
+    .screen-body {
+        padding: 10px;
+    }
+
     .profile-card {
-        flex-direction: column; /* Текст под фото */
-        align-items: center;    /* Центр фото */
+        flex-direction: column;
+        align-items: center;
         gap: 15px;
-        
-        /* Растягиваем на всю ширину */
         width: auto;            
-        margin-left: -5px;      /* Небольшие отрицательные отступы, */
-        margin-right: -5px;     /* чтобы рамка была еще шире */
+        margin-left: -5px;
+        margin-right: -5px;
         margin-bottom: 20px;
     }
 
-    /* 3. Аватарка */
     .profile-visual {
-        margin-top: -20px;      /* Поднимаем еще выше, чтобы красиво "сидела" на рамке */
+        margin-top: -20px;
         width: 120px;
         height: 120px;
         flex-shrink: 0;
-        background: #000;       /* Чтобы за аватаркой не просвечивала линия рамки */
-        z-index: 2;             /* Чтобы аватарка была поверх рамки */
+        background: #000;
+        z-index: 2;
     }
 
-    /* 4. Текст */
     .profile-data {
         width: 100%;
         text-align: left;
     }
 
-    /* Улучшение читаемости мета-данных */
     .meta-data p {
         display: flex;
         flex-direction: column;
@@ -251,5 +1014,17 @@ footer { text-align: center; padding: 20px; color: #444; font-size: 0.7rem; marg
         color: var(--neon-blue);
         margin-bottom: 2px;
     }
-}
 
+    /* Адаптивность для гайда (Мобильные) */
+    .guide-gallery {
+        column-count: 1; /* В одну колонку на телефонах */
+    }
+
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-image-wrapper {
+        height: auto;
+    }
+}

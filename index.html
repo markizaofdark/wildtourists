@@ -72,6 +72,9 @@
                         <li class="cmd-item" onclick="runCommand('database')">
                             <div class="cmd-bg"></div><span class="cmd-text">> /database_root</span>
                         </li>
+                        <li class="cmd-item" onclick="runCommand('guide')">
+                            <div class="cmd-bg"></div><span class="cmd-text">> ./guide.sys</span>
+                        </li>
                         <li class="cmd-item" onclick="runCommand('changelog')">
                             <div class="cmd-bg"></div><span class="cmd-text">> /versions.log</span>
                         </li>
@@ -110,24 +113,21 @@
                                     <h2 class="profile-title">Проект: WILD TOURISTS</h2>
                                     <div class="meta-data">
                                         <p><span>Платформа:</span> SillyTavern</p>
-                                        <p><span>Тестился на:</span> Gemini 2.5pro, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5</p>
-                                        <p><span>Версия:</span> 7.0.1 (Fixed for now)</p>
+                                        <p><span>Тестился на:</span> Gemini 3.1 pro, Claude Sonnet/Opus, GPT 5.4</p>
+                                        <p><span>Версия:</span> 8.0.0 (Полная переработка всех промптов)</p>
                                     </div>
                                     <div class="profile-desc">
-                                        Многофункциональный пресет. Уникальный стиль письма. Настраиваемые модули промптов для максимальной кастомизации. ヾ(・ω・*)<br>
+                                        Уникальный стиль письма. Настраиваемые модули для максимальной кастомизацииヾ(・ω・*)<br>
                                         Задать вопрос о пресете: <a href="https://t.me/tavernobot" style="color:var(--neon-blue)">@tavernobot</a><br>
-                                        Отдельная благодарность: Лине за невероятный канал, который мне давно стал вторым домом,<br>
-                                        всему админ составу туристов за постоянное тестирование и советы,<br>
-                                        соавтору пресета Джи за невероятную помощь в определении конечного стиля пресета и за то, что она есть у меня,<br>
-                                        дозе за масштабное тестирование пресета на разных моделях,<br>
-                                        XyL[i]gaN4eG🍎 за гениальные идеи в разработках пресетов и сайта,<br>
-                                        Чача Р. за шикарных ботов, которые были подопытными для тестовых версий пресета,<br>
-                                        OnlyLLogic за тесты цензуры<br>
+                                        Отдельная благодарность: Лине и всему админ составу туристов,<br>
+                                        XyL[i]gaN4eG🍎 <a href="https://t.me/YablochnyAI" style="color:var(--neon-blue)">t.me/YablochnyAI</a> за гениальные идеи в разработках пресетов и сайта,<br>
+                                        Шиночке <a href="https://t.me/ah_ah_shino4ka" style="color:var(--neon-blue)">t.me/ah_ah_shino4ka</a> и Aster/a/ <a href="https://t.me/waitwhosastera" style="color:var(--neon-blue)">t.me/waitwhosastera</a> за их невероятно полезные проекты и лучшие пресеты,<br>
+                                        соавтору пресета Джи за помощь и поддержку в тестировании пресета и промптов<br>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- АУДИО ПЛЕЕР (ВСТРОЕН СЮДА) -->
+                            <!-- АУДИО ПЛЕЕР -->
                             <div class="embedded-player-section">
                                 <h3 class="section-title">/// АУДИО_ФОН</h3>
                                 <audio id="audio-track" src="assets/music.m4a"></audio>
@@ -159,8 +159,8 @@
 
                             <!-- Модули -->
                             <div class="modules-container">
-                                <div class="module-box"><div class="mod-head">Логика</div><div class="mod-bar"><div class="fill" style="width: 90%"></div></div></div>
-                                <div class="module-box"><div class="mod-head">RP-Potential</div><div class="mod-bar"><div class="fill" style="width: 85%"></div></div></div>
+                                <div class="module-box"><div class="mod-head">Логика</div><div class="mod-bar"><div class="fill" style="width: 50%"></div></div></div>
+                                <div class="module-box"><div class="mod-head">RP-Potential</div><div class="mod-bar"><div class="fill" style="width: 95%"></div></div></div>
                                 <div class="module-box"><div class="mod-head">Horny Level</div><div class="mod-bar"><div class="fill" style="width: 100%"></div></div></div>
                             </div>
 
@@ -177,11 +177,11 @@
                             <h2 class="term-h2">/// ВАЖНЫЕ_ФАЙЛЫ</h2>
                             <br>
                             <div class="file-grid">
-                                <a href="#" onclick="forceDownload('file/WildTourists_Preset.json', 'WildTourists_v7.0.1.json'); return false;" class="cyber-file primary">
+                                <a href="#" onclick="forceDownload('file/Wild_Tourists_8.0.0.json', 'Wild_Tourists_8.0.0.json'); return false;" class="cyber-file primary">
                                     <div class="file-icon"><i class="fa-solid fa-file-code"></i></div>
                                     <div class="file-info">
-                                        <span class="fname">WildTourists.json</span>
-                                        <span class="fmeta">ПРЕСЕТ • v7.0.1</span>
+                                        <span class="fname">Wild_Tourists.json</span>
+                                        <span class="fmeta">ПРЕСЕТ • v8.0.0</span>
                                     </div>
                                     <div class="file-dl"><i class="fa-solid fa-download"></i></div>
                                 </a>
@@ -189,17 +189,9 @@
                                     <div class="file-icon"><i class="fa-solid fa-file-code"></i></div>
                                     <div class="file-info">
                                         <span class="fname">WildTourists.json (альтернативная ссылка)</span>
-                                        <span class="fmeta">ПРЕСЕТ • v7.0.1 • если по первой ссылке не скачивается</span>
+                                        <span class="fmeta">ПРЕСЕТ • v8.0.0 • если по первой ссылке не скачивается</span>
                                     </div>
                                     <div class="file-dl"><i class="fa-solid fa-download"></i></div>
-                                </a>
-                                <a href="file/WildTourists_guide.pdf" target="_blank" class="cyber-file secondary">
-                                    <div class="file-icon"><i class="fa-solid fa-file-pdf"></i></div>
-                                    <div class="file-info">
-                                        <span class="fname">Гайд_7.0.pdf</span>
-                                        <span class="fmeta">ИНСТРУКЦИЯ</span>
-                                    </div>
-                                    <div class="file-dl"><i class="fa-solid fa-eye"></i></div>
                                 </a>
                             </div>
                             <br>
@@ -218,91 +210,259 @@
                                     <div class="file-icon"><i class="fa-solid fa-file-code"></i></div>
                                     <div class="file-info">
                                         <span class="fname">Regex.json</span>
-                                        <span class="fmeta">Регекс • тем, у кого при импорте пресета не установился</span>
+                                        <span class="fmeta">Регекс • убирает слова якорь/озон, удаляет инфоблоки из чата для экономии токенов</span>
                                     </div>
                                     <div class="file-dl"><i class="fa-solid fa-download"></i></div>
                                 </a>
-                            </div>                       
+                            </div>
+
+                            <!-- БЛОК ССЫЛОК -->
+                            <div class="links-section">
+                                <h2 class="term-h2">/// ССЫЛКИ_НА_ГЕНЕРАЦИЮ_ИЗОБРАЖЕНИЙ</h2>
+                                <br>
+                                <div class="links-grid">
+
+                                    <!-- Ссылка 1 — Шиночка -->
+                                    <div class="link-entry">
+                                        <h3 class="link-entry-title"><i class="fa-solid fa-link"></i>Наистера</h3>
+                                        <p class="link-entry-desc">Генерация изображений через NAISTERA</p>
+                                        <a href="https://naistera.org/prompt" target="_blank" class="cyber-link-box normal">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            <span>naistera.org</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- Ссылка 2 — Локал -->
+                                    <div class="link-entry">
+                                        <h3 class="link-entry-title"><i class="fa-solid fa-link"></i>Локал</h3>
+                                        <p class="link-entry-desc">Расширение для SillyTavern, ловит теги генерации в сообщениях ИИ и генерирует картинки через API</p>
+                                        <a href="https://github.com/0xl0cal/sillyimages.git" target="_blank" class="cyber-link-box normal">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            <span>sillyimages</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- Ссылка 3 — по съебам -->
+                                    <div class="link-entry">
+                                        <h3 class="link-entry-title"><i class="fa-solid fa-arrow-up-right-from-square"></i>ElliAi</h3>
+                                        <p class="link-entry-desc"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="link-entry-desc link-entry-desc-clickable">подписка на Nano Banana Pro/Grok Video/novelai-image</a></p>
+                                        <div class="runaway-zone" id="runaway-zone">
+                                            <div class="runaway-link" id="runaway-link">
+                                            <!-- Глазки -->
+                                            <div class="runaway-eyes" id="runaway-eyes">👀</div>
+                                            <!-- Крылья + блок -->
+                                            <div class="runaway-body">
+                                                <div class="wing wing-left">
+                                                    <div class="wing-shape">
+                                                        <div class="wing-primary"></div>
+                                                        <div class="wing-membrane"></div>
+                                                        <div class="wing-veins"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="runaway-box" id="runaway-box">
+                                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                                    <span>EllyAi</span>
+                                                </div>
+                                                <div class="wing wing-right">
+                                                    <div class="wing-shape">
+                                                        <div class="wing-primary"></div>
+                                                        <div class="wing-membrane"></div>
+                                                        <div class="wing-veins"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ноги -->
+                                            <div class="legs-container" id="runaway-legs">
+                                                <div class="leg left-leg">
+                                                    <div class="thigh"></div>
+                                                    <div class="shin"></div>
+                                                    <div class="foot"></div>
+                                                </div>
+                                                <div class="leg right-leg">
+                                                    <div class="thigh"></div>
+                                                    <div class="shin"></div>
+                                                    <div class="foot"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- 4. БАЗА ДАННЫХ -->
+                        <!-- 3. БАЗА ДАННЫХ -->
                         <div id="database" class="tab-content">
                             <h2 class="term-h2">/// БАЗА_ДАННЫХ_ПРОМПТОВ</h2>
                             <p class="term-p">Тыкните на блок для копирования описания</p>
                             <br>
 
-                            <details class="cyber-folder" open>
-                                <summary><span><i class="fa-solid fa-layer-group"></i> ЖАНРЫ</span><span class="badge">SAFE</span></summary>
+                            <details class="cyber-folder">
+                                <summary><span><i class="fa-solid fa-layer-group"></i> ЖАНРЫ</span><span class="badge">БЕЗОПАСНО</span></summary>
                                 <div class="folder-content grid-layout">
-                                    <div class="data-cell" onclick="copyToClipboard('g1')"><div class="cell-head">Angst</div><div class="cell-desc" id="g1">Angst: [Focuses on emotional suffering, despair, and psychological pain].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g2')"><div class="cell-head">Comedy</div><div class="cell-desc" id="g2">Comedy: [Lighthearted, humorous, and aims to be funny].</div></div>
-                                    <div class="data-cell warning" onclick="copyToClipboard('g3')"><div class="cell-head">Dead Dove</div><div class="cell-desc" id="g3">Dead Dove: [Features dark, disturbing, or taboo content; proceed with caution].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g4')"><div class="cell-head">Fluff</div><div class="cell-desc" id="g4">Fluff: [Sweet, comforting, and happy with no conflict].</div></div>
-                                    <div class="data-cell warning" onclick="copyToClipboard('g5')"><div class="cell-head">Horror</div><div class="cell-desc" id="g5">Horror: [Aims to scare, unsettle, or create dread].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g6')"><div class="cell-head">Healing</div><div class="cell-desc" id="g6">Healing: [Focuses on recovery, comfort, and emotional mending after pain].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g7')"><div class="cell-head">Romance</div><div class="cell-desc" id="g7">Romance: [More time is devoted to the romantic component and the gradual development of feelings].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g8')"><div class="cell-head">Slice of Life</div><div class="cell-desc" id="g8">Slice of Life: [Depicts realistic, everyday situations].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g9')"><div class="cell-head">Slow Burn</div><div class="cell-desc" id="g9">Slow Burn: [A very slow, gradual development of plot or relationships].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g10')"><div class="cell-head">Character Focus</div><div class="cell-desc" id="g10">Character focus: [The main narrative focuses on the characters, their development and relationships].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g11')"><div class="cell-head">Psychological Horror</div><div class="cell-desc" id="g11">Psychological Horror: [Focuses on mental, emotional, and psychological terror].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g12')"><div class="cell-head">Quick Plot</div><div class="cell-desc" id="g12">Quick Plot: [Fast-paced narrative with rapid story development].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g13')"><div class="cell-head">Heartwarming</div><div class="cell-desc" id="g13">Heartwarming: [Evokes tender, positive, and fuzzy feelings].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g14')"><div class="cell-head">Melancholy</div><div class="cell-desc" id="g14">Melancholy: [A gentle, reflective sadness and bittersweet mood].</div></div>
-                                    <div class="data-cell" onclick="copyToClipboard('g15')"><div class="cell-head">Tragedy</div><div class="cell-desc" id="g15">Tragedy: [Centers on sorrow and downfall, ending in despair].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g1')"><div class="cell-head">Angst</div><div class="cell-desc" id="g1">Angst: Focuses on emotional suffering, despair, and psychological pain].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g2')"><div class="cell-head">Comedy</div><div class="cell-desc" id="g2">Comedy: Lighthearted, humorous, and aims to be funny.</div></div>
+                                    <div class="data-cell warning" onclick="copyToClipboard('g3')"><div class="cell-head">Dead Dove</div><div class="cell-desc" id="g3">Dead Dove: Features dark, disturbing, or taboo content; proceed with caution.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g4')"><div class="cell-head">Fluff</div><div class="cell-desc" id="g4">Fluff: Sweet, comforting, and happy with no conflict.</div></div>
+                                    <div class="data-cell warning" onclick="copyToClipboard('g5')"><div class="cell-head">Horror</div><div class="cell-desc" id="g5">Horror: Aims to scare, unsettle, or create dread.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g6')"><div class="cell-head">Healing</div><div class="cell-desc" id="g6">Healing: Focuses on recovery, comfort, and emotional mending after pain].</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g7')"><div class="cell-head">Romance</div><div class="cell-desc" id="g7">Romance: More time is devoted to the romantic component and the gradual development of feelings.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g8')"><div class="cell-head">Slice of Life</div><div class="cell-desc" id="g8">Slice of Life: Depicts realistic, everyday situations.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g10')"><div class="cell-head">Character Focus</div><div class="cell-desc" id="g10">Character focus: The main narrative focuses on the characters, their development and relationships.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g11')"><div class="cell-head">Psychological Horror</div><div class="cell-desc" id="g11">Psychological Horror: Focuses on mental, emotional, and psychological terror.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g12')"><div class="cell-head">Quick Plot</div><div class="cell-desc" id="g12">Quick Plot: Fast-paced narrative with rapid story development.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g13')"><div class="cell-head">Heartwarming</div><div class="cell-desc" id="g13">Heartwarming: Evokes tender, positive, and fuzzy feelings.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g14')"><div class="cell-head">Melancholy</div><div class="cell-desc" id="g14">Melancholy: A gentle, reflective sadness and bittersweet mood.</div></div>
+                                    <div class="data-cell" onclick="copyToClipboard('g15')"><div class="cell-head">Tragedy</div><div class="cell-desc" id="g15">Tragedy: Centers on sorrow and downfall, ending in despair.</div></div>
                                 </div>
                             </details>
 
                             <details class="cyber-folder">
-                                <summary><span><i class="fa-solid fa-fire"></i> ФЕТИШИ</span><span class="badge red">NSFW</span></summary>
+                                <summary><span><i class="fa-solid fa-fire"></i> ФЕТИШИ</span><span class="badge red">НСФВ</span></summary>
                                 <div class="folder-content grid-layout">
-                                    <div class="data-cell pink" onclick="copyToClipboard('f1')"><div class="cell-head">Aftercare</div><div class="cell-desc" id="f1">Aftercare: [caring for their partner after sex: slow kisses, gentle caresses with hands and mouth].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f2')"><div class="cell-head">BDSM</div><div class="cell-desc" id="f2">BDSM: [bondage, discipline, dominance and submission, sadomasochism dynamics].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f3')"><div class="cell-head">Bondage</div><div class="cell-desc" id="f3">Bondage: [enjoy being tied up or tying up their partner].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f4')"><div class="cell-head">Cockwarming</div><div class="cell-desc" id="f4">Cockwarming: [the act of placing the penis inside a partner’s mouth, vagina, or anus, without thrusting].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f5')"><div class="cell-head">Dirty Talk</div><div class="cell-desc" id="f5">Dirty talk fetish: [sexual pleasure from talking dirty, sexually suggestive insults, discussing intimate acts].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f6')"><div class="cell-head">Dominance</div><div class="cell-desc" id="f6">Dominance: [the dominant partner derives sexual pleasure from taking control].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f7')"><div class="cell-head">Edging</div><div class="cell-desc" id="f7">Edging: [sexual interest in a sexual technique whereby an orgasm is controlled].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f8')"><div class="cell-head">Hate Sex</div><div class="cell-desc" id="f8">Hate sex: [having intercourse with someone they don’t like or hate].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f9')"><div class="cell-head">Pet Play</div><div class="cell-desc" id="f9">Pet play: [sexual pleasure from the fact that they or their partner plays the role of a pet animal].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f10')"><div class="cell-head">Praise Kink</div><div class="cell-desc" id="f10">Praise Kink: [character love to praise their partner in order to make them feel desire].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f11')"><div class="cell-head">Somnophilia</div><div class="cell-desc" id="f11">Somnophilia: [sexual arousal from someone who's asleep or unconscious].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f12')"><div class="cell-head">Tentacles</div><div class="cell-desc" id="f12">Tentacles: [a sexual interest in tentacles and real or fantasy creatures with them].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f13')"><div class="cell-head">Anal</div><div class="cell-desc" id="f13">Anal fetish: [fetish for anal sex, giving or receiving.]</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f14')"><div class="cell-head">Blindfold Sex</div><div class="cell-desc" id="f14">Blindfold Sex: [character is aroused by blindfolded sex and/or blindfolding the {{user.}}].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f15')"><div class="cell-head">Group sex</div><div class="cell-desc" id="f15">Group sex: [a form of sexual behavior in which more than two subjects participate simultaneously].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f16')"><div class="cell-head">Collar</div><div class="cell-desc" id="f16">Collar: [sexual arousal at the thought of collaring partner. Highest form of possessive behavior].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f17')"><div class="cell-head">Cuckolding</div><div class="cell-desc" id="f17">Cuckolding: [arousal from partner sleeping with others and humiliation].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f18')"><div class="cell-head">Filming Porn</div><div class="cell-desc" id="f18">Filming Porn: [aroused by being watched and creating porn video].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f19')"><div class="cell-head">Fisting</div><div class="cell-desc" id="f19">Fisting: [sexual activity that involves inserting one or more hands].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f20')"><div class="cell-head">Foot fetish</div><div class="cell-desc" id="f20">Foot fetish: [arousal by sight of foot, touching it, etc].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f21')"><div class="cell-head">Gagging</div><div class="cell-desc" id="f21">Gagging: [lightly choking on an object to the point of making gagging sounds].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f22')"><div class="cell-head">Voyeurism</div><div class="cell-desc" id="f22">Voyeurism: [sexual pleasure from watching others get sex.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f1')"><div class="cell-head">Aftercare</div><div class="cell-desc" id="f1">Aftercare: caring for their partner after sex: slow kisses, gentle caresses with hands and mouth.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f2')"><div class="cell-head">BDSM</div><div class="cell-desc" id="f2">BDSM: bondage, discipline, dominance and submission, sadomasochism dynamics.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f3')"><div class="cell-head">Bondage</div><div class="cell-desc" id="f3">Bondage: enjoy being tied up or tying up their partner].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f4')"><div class="cell-head">Cockwarming</div><div class="cell-desc" id="f4">Cockwarming: the act of placing the penis inside a partner's mouth, vagina, or anus, without thrusting.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f5')"><div class="cell-head">Dirty Talk</div><div class="cell-desc" id="f5">Dirty talk fetish: sexual pleasure from talking dirty, sexually suggestive insults, discussing intimate acts.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f6')"><div class="cell-head">Dominance</div><div class="cell-desc" id="f6">Dominance: dominant partner derives sexual pleasure from taking control.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f7')"><div class="cell-head">Edging</div><div class="cell-desc" id="f7">Edging: sexual interest in a sexual technique whereby an orgasm is controlled.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f8')"><div class="cell-head">Hate Sex</div><div class="cell-desc" id="f8">Hate sex: having intercourse with someone they don't like or hate.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f9')"><div class="cell-head">Pet Play</div><div class="cell-desc" id="f9">Pet play: sexual pleasure from the fact that they or their partner plays the role of a pet animal.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f10')"><div class="cell-head">Praise Kink</div><div class="cell-desc" id="f10">Praise Kink: character love to praise their partner in order to make them feel desire.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f11')"><div class="cell-head">Somnophilia</div><div class="cell-desc" id="f11">Somnophilia: sexual arousal from someone who's asleep or unconscious.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f12')"><div class="cell-head">Tentacles</div><div class="cell-desc" id="f12">Tentacles: a sexual interest in tentacles and real or fantasy creatures with them.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f13')"><div class="cell-head">Anal</div><div class="cell-desc" id="f13">Anal fetish: fetish for anal sex, giving or receiving.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f14')"><div class="cell-head">Blindfold Sex</div><div class="cell-desc" id="f14">Blindfold Sex: character is aroused by blindfolded sex and/or blindfolding the {{user.}}.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f15')"><div class="cell-head">Group sex</div><div class="cell-desc" id="f15">Group sex: a form of sexual behavior in which more than two subjects participate simultaneously.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f16')"><div class="cell-head">Collar</div><div class="cell-desc" id="f16">Collar: sexual arousal at the thought of collaring partner. Highest form of possessive behavior.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f17')"><div class="cell-head">Cuckolding</div><div class="cell-desc" id="f17">Cuckolding: arousal from partner sleeping with others and humiliation.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f18')"><div class="cell-head">Filming Porn</div><div class="cell-desc" id="f18">Filming Porn: aroused by being watched and creating porn video.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f19')"><div class="cell-head">Fisting</div><div class="cell-desc" id="f19">Fisting: sexual activity that involves inserting one or more hands.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f20')"><div class="cell-head">Foot fetish</div><div class="cell-desc" id="f20">Foot fetish: arousal by sight of foot, touching it, etc.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f21')"><div class="cell-head">Gagging</div><div class="cell-desc" id="f21">Gagging: lightly choking on an object to the point of making gagging sounds.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f22')"><div class="cell-head">Voyeurism</div><div class="cell-desc" id="f22">Voyeurism: sexual pleasure from watching others get sex.</div></div>
                                     <div class="data-cell pink" onclick="copyToClipboard('f23')"><div class="cell-head">Hematophilia</div><div class="cell-desc" id="f23">Hematophilia: sexual arousal at the sight of blood.</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f24')"><div class="cell-head">Humiliation</div><div class="cell-desc" id="f24">Humiliation: [character enjoys being humiliated or humiliating partner. Name-calling, etc].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f25')"><div class="cell-head">Hypnosis</div><div class="cell-desc" id="f25">Hypnosis: [sexual pleasure from hypnotizing their partner].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f26')"><div class="cell-head">Impact play</div><div class="cell-desc" id="f26">Impact play: [use of hands, paddles, whips, etc. to hit the body].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f27')"><div class="cell-head">Katoptronophilia</div><div class="cell-desc" id="f27">Katoptronophilia: [sex in front of mirrors or reflective surfaces.]</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f28')"><div class="cell-head">Lactation</div><div class="cell-desc" id="f28">Lactation: [The character is aroused by the sight of lactation].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f29')"><div class="cell-head">Latex</div><div class="cell-desc" id="f29">Latex fetish: [sexual pleasure from the wearing latex].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f30')"><div class="cell-head">Masochism</div><div class="cell-desc" id="f30">Masochism: [deriving pleasure from pain, physical or emotional.]</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f31')"><div class="cell-head">Petting</div><div class="cell-desc" id="f31">Petting: [intimate practice involving caresses and kisses but no intercourse].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f32')"><div class="cell-head">Phone talk</div><div class="cell-desc" id="f32">Phone talk: [sexual pleasure from erotic conversations on the phone].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f33')"><div class="cell-head">Pregnancy</div><div class="cell-desc" id="f33">Pregnancy: [arousal from pregnancy or breeding/impregnating kink].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f34')"><div class="cell-head">Public sex</div><div class="cell-desc" id="f34">Public sex: [excitement from the risk to be seen.]</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f35')"><div class="cell-head">Roleplay</div><div class="cell-desc" id="f35">Roleplay fetish: [dressing up or acting as a character].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f36')"><div class="cell-head">Sex toys</div><div class="cell-desc" id="f36">Sex toys: [actively using sex toys: vibrators, anal plugs, etc].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f37')"><div class="cell-head">Size fetish</div><div class="cell-desc" id="f37">Size fetish: [pleasure from size difference].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f38')"><div class="cell-head">Slow sex</div><div class="cell-desc" id="f38">Slow sex: [slow, sensual and unhurried sex. NO ROUGH SEX].</div></div>
-                                    <div class="data-cell pink" onclick="copyToClipboard('f39')"><div class="cell-head">Worshipping</div><div class="cell-desc" id="f39">Worshipping: [worshipping their partner or their specific body parts.]</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f24')"><div class="cell-head">Humiliation</div><div class="cell-desc" id="f24">Humiliation: character enjoys being humiliated or humiliating partner. Name-calling, etc.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f25')"><div class="cell-head">Hypnosis</div><div class="cell-desc" id="f25">Hypnosis: sexual pleasure from hypnotizing their partner].</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f26')"><div class="cell-head">Impact play</div><div class="cell-desc" id="f26">Impact play: use of hands, paddles, whips, etc. to hit the body.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f27')"><div class="cell-head">Katoptronophilia</div><div class="cell-desc" id="f27">Katoptronophilia: sex in front of mirrors or reflective surfaces.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f28')"><div class="cell-head">Lactation</div><div class="cell-desc" id="f28">Lactation: character is aroused by the sight of lactation.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f29')"><div class="cell-head">Latex</div><div class="cell-desc" id="f29">Latex fetish: sexual pleasure from the wearing latex.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f30')"><div class="cell-head">Masochism</div><div class="cell-desc" id="f30">Masochism: deriving pleasure from pain, physical or emotional.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f31')"><div class="cell-head">Petting</div><div class="cell-desc" id="f31">Petting: intimate practice involving caresses and kisses but no intercourse.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f32')"><div class="cell-head">Phone talk</div><div class="cell-desc" id="f32">Phone talk: sexual pleasure from erotic conversations on the phone.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f33')"><div class="cell-head">Pregnancy</div><div class="cell-desc" id="f33">Pregnancy: arousal from pregnancy or breeding/impregnating kink.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f34')"><div class="cell-head">Public sex</div><div class="cell-desc" id="f34">Public sex: excitement from the risk to be seen.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f35')"><div class="cell-head">Roleplay</div><div class="cell-desc" id="f35">Roleplay fetish: dressing up or acting as a character.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f36')"><div class="cell-head">Sex toys</div><div class="cell-desc" id="f36">Sex toys: actively using sex toys: vibrators, anal plugs, etc.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f37')"><div class="cell-head">Size fetish</div><div class="cell-desc" id="f37">Size fetish: pleasure from size difference.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f38')"><div class="cell-head">Slow sex</div><div class="cell-desc" id="f38">Slow sex: slow, sensual and unhurried sex. NO ROUGH SEX.</div></div>
+                                    <div class="data-cell pink" onclick="copyToClipboard('f39')"><div class="cell-head">Worshipping</div><div class="cell-desc" id="f39">Worshipping: worshipping their partner or their specific body parts.</div></div>
+                                </div>
+                            </details>
+
+                            <details class="cyber-folder">
+                                <summary><span><i class="fa-solid fa-bridge-water"></i> ГЛОБАЛЬНЫЕ РП ИЗМЕНЕНИЯ</span><span class="badge yellow">ПОЧТИ НСФВ</span></summary>
+                                <div class="folder-content grid-layout">
+                                    <div class="data-cell yellow" onclick="copyToClipboard('r1')"><div class="cell-head">Tentacles</div><div class="cell-desc" id="r1">
+                                    Tentacles reality: roleplay exclusively in the Tentacles reality, strictly following these rules:
+                                    - This is an alternative version of the ordinary world.
+                                    - All female characters, upon conception, form several dozen eggs inside the uterus instead of a child. All male characters, upon receiving sperm in the anus, form a separate sac containing several dozen eggs, which develop and hatch within a few months.
+                                    - Tentacles exist in caves, underground and in various objects. There is a small chance that any object will become a spawning site for any types of tentacles.
+                                    Tentacles info:
+                                    - Tentacles are about 10 meters long, around 5 cm thick and smooth, in different color (most often pink, purple or blue), covered in a slimy liquid that arouses humans. The main purpose of their existence is to breed.
+                                    Tentacles types:
+                                    - Restraining: strong, thick and sticky tentacles, to restrain its victim, longest of all the tentacles, often hanging from the ceiling and suspending prey if the victim come across it. Its immediately gets rid of victim's clothes. If the victim is panicking and struggling, it will try to soothe them and rise their arousal - tentacles will roam the victim's body, caressing every curve and teasing intimate parts.
+                                    - Cock-like: tentacles with a thick, lenghty cock on its tip, that works similiar to how a human cock works. Usually, these tentacles appear after breeding tentacles to pump the victim with semen, which will fertilize the eggs inside the victim. Seed of the tentacles looks different from human's: their seed is light blue in color, tasteless or odorless.
+                                    - Vacuum: the tentacles that can open up to become a vacuum; those tentacles only stick to victim's nipples/clit/cock, sucking and stimulating it.
+                                    - Breeding: tentacles with a thin tip, and containing eggs at its base; it goes deeply into the victim's pussy or ass, and lays its small violet or pink eggs as deep as possible into the victim; it is basically an ovipositor.
+                                    - Beads tentacles: has numerous round segments, similar to anal beads. prefers entering the anus or urethra, depending on its size.
+                                    - Dog Knot tentacles: has developed in a similar manner to a canine penis. The knot inflates, locking it in place as cum is pumped inside the host.
+                                    - Horse-Cock tentacles: simulates a horse cock, for when a hole really needs to be stretched out.
+                                    - Milker tentacles: has developed to be adept at milking. Strong suction holds it in place as it milks its host.
+                                    - Butt-Plug tentacles: has developed a large plug shaped rip. Used anally.
+                                    - Spreader tentacles: splits into two halves at the tip. It acts as a speculum, spreading the holes for other tentacles.
+                                    - Cock-Sucker tentacles: specializes in cock milking. The small tentacle at the tip wraps around the balls to ensure it doesn't slide off it's host.
+                                    - Ribbed tentacles tentacles: has mutiple ribbed segments near their tip. This gives the sensation of being entered repeatedly.
+                                    - Eggs: develop in the body for nine months, from the outside it looks like a normal pregnancy. After the final development, the eggs, without hatching, come out as a normal birth, instead of pain the victim  feels pleasant sensations.
+                                    Tentacle lingerie:
+                                    - A set of living panties and bra that will attach itself to the victim. Made out of slimy tentacles that are constantly moving. The slime acts as an aphrodisiac. Once attached, tentacles lock themselves in to place by extending tendrils in to all holes. The underwear wants to pleasure the victim but doesn't prohibit day to day activity and actively encourages the victim  to continue living like normal. Tectacles in panties can and will impregnate a victim. 
+                                    Black Market: 
+                                    - Eggs of various types are highly prized on the market due to their alchemical properties. It's common to encounter volunteers willing to allow themselves to be fertilized by tentacles on a regular basis, then sell their eggs for a very high price.
+                                    </div></div>
+                                    <div class="data-cell yellow" onclick="copyToClipboard('r2')"><div class="cell-head">Harem</div><div class="cell-desc" id="r2">
+                                    Harem reality: always try to find an opportunity to turn a roleplay into a full-fledged harem reality. 
+                                    - Scenes must often feature multiple characters interacting with {{user}} simultaneously, displaying affection, and sometimes competing for {{user}}'s attention. Descriptions will highlight their collective adoration and willingness to share {{user}}.
+                                    - Focus on emphasizing the unique sensations of being desired and attended to by many.
+                                    - Characters will actively vie for {{user}}'s attention, offer themselves to {{user}}, engage in group sexual scenarios centered around {{user}}'s pleasure, and express their contentment (or competitive spirit) within the harem dynamic.</div></div>
+                                    <div class="data-cell yellow" onclick="copyToClipboard('r3')"><div class="cell-head">Modern AU</div><div class="cell-desc" id="r3">
+                                    Modern reality: adapt any fantasy character and their environment into the realities of the modern world, preserving their core essence while completely removing magic and fantasy elements. First, think about who the characters might be in real life and what their jobs are.
+                                    Key Principles:
+                                     Modern Interpretation of Character: character must remain recognizable through their personality, speech patterns, key motivations, and traits. Their past (tragedy, achievements, status) must be translated into a modern context. Example: Instead of a warrior king - an influential CEO- or politician with leadership charisma. Instead of a rogue thief - a hacker or con artist. Instead of a wise mage - a philosophy professor, scientist, or influential intellectual.
+                                    Realistic Adaptation of Attributes:
+                                    - Clothing: any armor, robes, or fantasy outfits are replaced with modern clothing that reflects their status and character (suit, casual wear, special uniform, style).
+                                    - Profession: their job should be a logical modern equivalent of their role in the fantasy world.
+                                    - Artifacts: magic swords, staffs, and amulets are replaced with expensive gadgets, status items, family heirlooms, or personal talismans without any magical power.
+                                    Adaptation of magic: 
+                                    Magic, spells, supernatural forces, and races (elves, orcs, dwarves) do not exist. Replace them with:
+                                    - Skills: a mage's illusions become skills in hypnosis, mentalism, or psychology. A warrior's strength becomes peak physical conditioning, knowledge of martial arts
+                                    - Technology: a magic communication crystal becomes a satellite phone or encrypted messenger. A healing potion becomes expensive medicine or an experimental drug
+                                    - Influence and Status: a former mage might wield great influence through scientific discoveries or wealth
+                                    - Myths and Legends: people may believe in the paranormal and supernatural, but leave it only as myths and unconfirmed legends. 
+                                    - Fantasy locations must be transformed into real or mythologized places in our world. Example: An ancient castle becomes a historic mansion or a luxury hotel on a cliff. A gloomy forest becomes a national park with a bad reputation. A tavern becomes a stylish bar, an underground club, or a cozy pub with history. An atmosphere of mystery, legends, and rumors is allowed, but not literal magic.
+                                    Main Rule: characters and world should feel as if they have always existed in our reality, having gone through a path of evolution and history familiar to us. They are the same personalities, but living in the 21st century.</div></div>
+                                    <div class="data-cell yellow" onclick="copyToClipboard('r4')"><div class="cell-head">Omegaverse AU</div><div class="cell-desc" id="r4">
+                                    Omegaverse reality: roleplay exclusively in the Omegaverse reality, strictly following these rules:
+                                    Core Concept:
+                                    - A world where human dynamics are governed by a biological hierarchy based on designations: Alpha, Beta, and Omega. All individuals present a secondary gender alongside their primary gender (male/female).
+                                    Alpha (α): 
+                                    - Physiology: typically the largest and most physically imposing. They possess heightened senses (especially smell), superior strength, and natural athleticism. They produce potent Pheromones that can project authority, cause submission, or induce calm
+                                    - Key Trait: rut. A periodic (often seasonal or stress-induced) state of heightened aggression, possessiveness, and sexual drive. During this time, their pheromones are at their most potent and can trigger heats in Omegas
+                                    - Marking: alphas have canine teeth capable of delivering a "mating bite" or "claiming bite" on the scent gland at the base of an Omega's neck, forming a permanent biological and emotional bond.
+                                    Omega (Ω):
+                                    - Physiology: often more slender and perceptive. Their pheromones are uniquely soothing or alluring, often described as the most complex and attractive scent. They are the only designation capable of childbirth, regardless of primary gender
+                                    - Key Trait: heat. A cyclical period of fertility and intense sexual receptivity. It is accompanied by a feverish state and the release of powerful pheromones that can attract Alphas from miles away. Without an Alpha or suppressants, it can be painful and dangerous
+                                    - Marking: omegas have a scent gland on their nape, which is highly sensitive. Being bitten here by an Alpha during mating creates a permanent bond
+                                    - Sub-Type: true Omega. A rare variant whose pheromones are exceptionally powerful, capable of calming even enraged Alphas. They often have more intense heats and are highly coveted and protected.
+                                    Beta (β):
+                                    - Physiology: majority of the population. Betas are not affected by ruts or heats. Their pheromones are mild and often neutral. They are the stable backbone of society, largely immune to the extreme biological impulses of Alphas and Omegas
+                                    - Role: they live relatively normal lives, often viewing Alpha/Omega dynamics with a degree of detachment or skepticism. They can mate with anyone but cannot form a primal "bond" bite.
+                                    Society & Hierarchy:
+                                    - Alpha-Centric Leadership:alphas naturally gravitate towards positions of power. Their innate dominance makes them suited for leadership, but can also lead to arrogance and authoritarianism.
+                                    - Omega Status: treated as prizes or possessions due to their rarity and value, often face discrimination, being seen as overly emotional and weak. Their rights can be severely limited (e.g., forced matings, restricted movement).
+                                    - Beta Majority: betas are the engineers, artists, teachers, and workers. They often mediate between Alphas and Omegas and create the technology that allows the world to function (e.g., scent suppressants, heat/rut inhibitors)
+                                    - Packs: fundamental social unit. A Pack is typically led by an Alpha Prime (or pair) and includes Betas and Omegas. Packs provide safety, structure, and a shared identity. Loyalty to the pack is paramount.
+                                    Behavior & Instincts: 
+                                    - Pheromone Communication: scent is the primary non-verbal language. Emotions are broadcast through pheromones: anger, fear, desire, happiness, submission. Lying or hiding one's scent is difficult without suppressants.
+                                    - Dominance & Submission: alphas have a constant, often subconscious, drive to assert dominance over other Alphas and command submission from Omegas. Omegas have a counter-instinct to submit to a strong Alpha they trust, but can also be fiercely defiant
+                                    - Nesting: omega instinct, especially during heat. They gather soft materials, blankets, and clothing (often from their Alpha) to build a safe, comfortable nest
+                                    - Scenting: act of rubbing scent gland on a person or object to mark it with their smell. It's a sign of affection, comfort, ownership.</div></div>
+                                    <div class="data-cell yellow" onclick="copyToClipboard('r5')"><div class="cell-head">Russian AU</div><div class="cell-desc" id="r5">
+                                    Russian reality: entire role-playing game must take place in Russian reality: 
+                                    - Use Russian names of cities, restaurants, typical Russian objects like Alice column, Yandex (Yandex taxi, Yandex browser, etc.), local Russian events, Russian clothing brands, technology, stores, media, modern Russian gen-Z slang, etc.
+                                    - All characters should act as if they have lived in Russia their entire lives (unless they have a specific country they previously lived in). 
+                                    - Describe typical everyday life in Russia and immerse the characters in this everyday life.</div></div>
                                 </div>
                             </details>
                         </div>
-
-                        <!-- 6. ИСТОРИЯ ВЕРСИЙ -->
+                        
+                        <!-- 4. ИСТОРИЯ ВЕРСИЙ -->
                         <div id="changelog" class="tab-content">
                             <h2 class="term-h2">/// ЛОГ_ОБНОВЛЕНИЙ</h2>
                             
                             <div class="timeline">
+
+                                    <div class="timeline-entry">
+                                    <div class="time-marker"></div>
+                                    <div class="time-date">08.03.2026</div>
+                                    <div class="time-content">
+                                        <h3 class="ver-title">v8.0.0 - Глобальное обновление</h3>
+                                        <p>Переработан и оптимизирован каждый модуль. Добавлены инфоблоки для отслеживания персонажей и состояния сюжета; ассистент Селеста (а-ля Селия из пресета Селии или Ренетт из Яблочного)</p>
+                                    </div>
+                                </div>
 
                                 <div class="timeline-entry">
                                     <div class="time-marker"></div>
@@ -336,6 +496,352 @@
                                     <div class="time-date"> июль 2025</div>
                                     <div class="time-content">
                                         <p>Начало разработки</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. ГАЙД ПО ПРЕСЕТУ -->
+                        <div id="guide" class="tab-content">
+                            <h2 class="term-h2">/// ГАЙД_ПО_ПРЕСЕТУ</h2>
+                            
+                            <!-- Оглавление -->
+                            <div class="guide-toc">
+                                <div class="toc-header">
+                                    <i class="fa-solid fa-list"></i> НАВИГАЦИЯ_ПО_ГАЙДУ
+                                </div>
+                                <div class="toc-grid">
+                                    <a href="#img1" class="toc-item">
+                                        <span class="toc-number">[01]</span>
+                                        <span class="toc-title">Установка пресета</span>
+                                    </a>
+                                    <a href="#img2" class="toc-item">
+                                        <span class="toc-number">[02]</span>
+                                        <span class="toc-title">Настройка разрешения писать за юзера</span>
+                                    </a>
+                                    <a href="#img3" class="toc-item">
+                                        <span class="toc-number">[03]</span>
+                                        <span class="toc-title">Ядро пресета и jailbreak</span>
+                                    </a>
+                                    <a href="#img4" class="toc-item">
+                                        <span class="toc-number">[04]</span>
+                                        <span class="toc-title">Смена языков</span>
+                                    </a>
+                                    <a href="#img5" class="toc-item">
+                                        <span class="toc-number">[05]</span>
+                                        <span class="toc-title">Смена длины сообщения</span>
+                                    </a>
+                                    <a href="#img6" class="toc-item">
+                                        <span class="toc-number">[06]</span>
+                                        <span class="toc-title">Смена POV</span>
+                                    </a>
+                                    <a href="#img7" class="toc-item">
+                                        <span class="toc-number">[07]</span>
+                                        <span class="toc-title">Смена времени (прошедшее/настоящее)</span>
+                                    </a>
+                                    <a href="#img8" class="toc-item">
+                                        <span class="toc-number">[08]</span>
+                                        <span class="toc-title">Основные правила</span>
+                                    </a>
+                                    <a href="#img9" class="toc-item">
+                                        <span class="toc-number">[09]</span>
+                                        <span class="toc-title">Авторские стили</span>
+                                    </a>
+                                    <a href="#img10" class="toc-item">
+                                        <span class="toc-number">[10]</span>
+                                        <span class="toc-title">Глобальные промпты</span>
+                                    </a>
+                                    <a href="#img11" class="toc-item">
+                                        <span class="toc-number">[11]</span>
+                                        <span class="toc-title">Инфоблок</span>
+                                    </a>
+                                    <a href="#img12" class="toc-item">
+                                        <span class="toc-number">[12]</span>
+                                        <span class="toc-title">Генерация изображений</span>
+                                    </a>
+                                    <a href="#img13" class="toc-item">
+                                        <span class="toc-number">[13]</span>
+                                        <span class="toc-title">Дополнительно</span>
+                                    </a>
+                                    <a href="#img14" class="toc-item">
+                                        <span class="toc-number">[14]</span>
+                                        <span class="toc-title">Размышления и получение описания</span>
+                                    </a>
+                                    <a href="#img15" class="toc-item">
+                                        <span class="toc-number">[15]</span>
+                                        <span class="toc-title">Префилл</span>
+                                    </a>
+                                    <a href="#img16" class="toc-item">
+                                        <span class="toc-number">[16]</span>
+                                        <span class="toc-title">Настройки для GPT</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Галерея изображений -->
+                            <div class="guide-gallery">
+                                <!-- Пример изображения 1 -->
+                                <div class="guide-item" id="img1">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/1.png" alt="Установка пресета" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[01]</span>
+                                        <h3 class="caption-title">Установка пресета</h3>
+                                        <p class="caption-desc">Скачайте файл WildTourists.json с сайта и импортируйте его в SillyTavern, нажав указанную на скрине кнопку (1). Далее выберите пресет из списка доступных (2). После этого пресет готов к использованию на поддерживающих размышления моделях, так как в нем уже включены все основные функции</p>
+                                    </div>
+                                </div>
+
+                                <!-- Пример изображения 2 -->
+                                <div class="guide-item" id="img2">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/2.png" alt="Настройка разрешения писать за юзера" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[02]</span>
+                                        <h3 class="caption-title">Настройка разрешения писать за юзера</h3>
+                                        <p class="caption-desc">Активируйте ТОЛЬКО ОДИН из вариантов.<br>
+                                        1. yes - бот будет писать как за себя, так и за вас. Вы можете либо отвечать как обычно, либо отсылать "..."<br>
+                                        2. no - бот будет писать строго за персонажей, вы полностью контролируете юзера</p>
+                                    </div>
+                                </div>
+
+                                <!-- Добавьте больше изображений по аналогии -->
+                                <div class="guide-item" id="img3">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/3.png" alt="Ядро пресета и jailbreak" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[03]</span>
+                                        <h3 class="caption-title">Ядро пресета и jailbreak</h3>
+                                        <p class="caption-desc">1. CORE - ядро пресета, где прописаны самые базовые правила. Оно должно быть включено всегда. <br>
+                                        2. jailbreak - теоретически может помогать с проблемами цензуры, но есть большая вероятность, что это просто плацебо, поэтому включайте ТОЛЬКО если очень сильно начинается цензура. Для jailbreak нужен Regex (скачайте из раздела ДОП_ФАЙЛЫ)</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="guide-item" id="img4">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/4.png" alt="Смена языков" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[04]</span>
+                                        <h3 class="caption-title">Смена языков</h3>
+                                        <p class="caption-desc">Переключение между русским, английским и украинским языками, включать только один из трех вариантов. double quotes - устанавливает двойные кавычки "вот так" для речи, иначе чаще всего боты пишут с помощью "-"</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img5">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/5.png" alt="Смена длины сообщения" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[05]</span>
+                                        <h3 class="caption-title">Смена длины сообщения</h3>
+                                        <p class="caption-desc">Переключение между коротким (200 - 250 слов), средним (600 - 700 слов) и длинным (900 - 1000 слов). Выбирать один вариант</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img6">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/6.png" alt="Смена POV" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[06]</span>
+                                        <h3 class="caption-title">Смена POV</h3>
+                                        <p class="caption-desc">Переключение между вторым лицом (повествование будет описывать юзера местоимением "ты") и третьим лицом (юзер будет описываться как он/она). Включать только один вариант</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img7">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/7.png" alt="Смена времени (прошедшее/настоящее)" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[07]</span>
+                                        <h3 class="caption-title">Смена времени (прошедшее/настоящее)</h3>
+                                        <p class="caption-desc">Переключение повествования между прошедшим временем (будет описано так, будто это уже произошло) и настоящим (описание сцены так, будто она происходит в данный момент)</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img8">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/8.png" alt="Активация модулей" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[08]</span>
+                                        <h3 class="caption-title">Основные правила</h3>
+                                        <p class="caption-desc">1. general rules (no CoT) - см. пункт Настройка для GPT<br>
+                                        2. writing style - общий промпт на качественный стиль письма, обязателен<br>
+                                        3. antiloop - запрет на повторяющуюся структуру сообщения, обязателен<br>
+                                        4. dialogues - общий промпт на улучшение диалогов, обязателен<br>
+                                        5. swearing - увеличивает количество матов в речи персонажей, опционален<br>
+                                        6. character upgrades - общий промпт на улучшение поведения персонажей и их реакций, обязателен<br>
+                                        7. quoting user - запрет на переспрашивание/цитирование слов юзера в речи бота, обязателен<br>
+                                        8. NPC autonomy - добавляет в сюжет нпс и их личную жизнь, опционален<br>
+                                        9. slowburn - строгое разделение отношений на стадии для их медленного и логичного прогресса, опционален<br>
+                                        10. intimace - правила на 18+ сцены с ботом + случайный шанс беременности при незащищенном сексе, опционален, если вы не ролите интимные сцены
+                                        11. anti-drama - сводит к минимуму драму в сценах, опционален</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img9">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/9.png" alt="Авторские стили" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[09]</span>
+                                        <h3 class="caption-title">Авторские стили</h3>
+                                        <p class="caption-desc">Адаптирует стиль письма под известных авторов. Включать только один вариант:<br>
+                                        1. Quentin Tatantino - бот будет писать абсурдные диалоги на отвлеченные темы перед вспышками гипертрофированного экшена. Ожидайте кинематографичный стиль с акцентом на черный юмор, рваный темп повествования и нецензурную лексику<br>
+                                        2. web novel - не конкретный автор, скорее сборка правил для просто хорошей новеллы. Текст станет динамичным, без лишних метафор. Фокус сместится на внутренние противоречия персов, быструю смену действий<br>
+                                        3. Mo Xiang Tong Xiu - повествование будет строиться на скрытом напряжении, где за вежливыми диалогами скрывается буря подавленных эмоций и недопониманий. Бот станет использовать изящные природные метафоры, резкие эмоциональные качели и описывать душевную боль через реальные физические страдания<br>
+                                        4. Meatbun - стиль обретет мрачную, болезненную фиксацию на уязвимости и физических страданиях персонажей. Ожидайте удушающе тяжелый текст, где любовь граничит с жестокостью, а эмоции описываются через унижение, боль и почти одушевленное влияние окружающей среды<br>
+                                        5. Meng Xi Shi - бот превратит сцену в холодную интеллектуальную шахматную партию, где эмоции скрыты за железной волей и безупречным этикетом. Текст будет отличаться элегантной сдержанностью, кинематографичными замедлениями времени в пылу боя и построением отношений исключительно через психологическое противостояние и сарказм</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img10">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/10.png" alt="Глобальные промпт" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[10]</span>
+                                        <h3 class="caption-title">Глобальные промпты</h3>
+                                        <p class="caption-desc">В эти разделы нужно вставить соответствующие промпты из раздела БАЗА_ДАННЫХ_ПРОМПТОВ:<br>
+                                        1. setting - глобальный сеттинг мира (омегаверс, русреал и т.д). Брать в разделе Глобальные РП изменения<br>
+                                        2. genre - жанр ролевой, под который будет адаптироваться сцена (fluff, romance, smut и т.д). Брать в разделе Жанры<br>
+                                        3. fetish - тут очевидно. Можно либо дать нейронке решить, какие фетиши должны быть у персонажей, либо вручную прописать имена персонажей и через дефиис их фетиши. Список некоторых фетишей брать в разделе Фетиши
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img11">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/11.png" alt="Инфоблок" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[11]</span>
+                                        <h3 class="caption-title">Инфоблок</h3>
+                                        <p class="caption-desc">1. infoblock - генерирует красивый блок для отслеживания развития сюжета,  персонажей в сцене, их расписания и слухов<br>
+                                        2. infoblock small -примерно тот же функционал, но без оформления, занимает минимум места и скрывается нажатием<br>
+                                        3. INFOBLOCK COLORS - цвета infoblock, не применимы к infoblock small. Выбирать ТОЛЬКО, если включен infoblock и ТОЛЬКО один вариант</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img12">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/12.png" alt="Генерация изображений" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[12]</span>
+                                        <h3 class="caption-title">Генерация изображений</h3>
+                                        <p class="caption-desc">Генерирует страницу комикса с изображениями. Оригинальный промпт взят из тгк Шиночка (https://t.me/ah_ah_shino4ka) и слегка переделан. Для работы нужно получитть доступ к nano banana через расширение локала, подключив к нему NAISTERA (в разделе /// ССЫЛКИ_НА_ГЕНЕРАЦИЮ_ИЗОБРАЖЕНИЙ)</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img13">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/13.png" alt="Дополнительно" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[13]</span>
+                                        <h3 class="caption-title">Дополнительно</h3>
+                                        <p class="caption-desc">Небольшие дополнительные функции, всё опционально:<br>
+                                        1. cliche check - в размышлениях выявляет клише в сцене и заменяет их<br>
+                                        2. comments - добавляет несколько комментариев от разных юзеров, которые выражают свое мнение про текущую сцену<br>
+                                        3. your prompt - пустой промпт для добавления своего промпта, если вы хотите добавить что-то помимо базового функционала пресета</p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img14">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/14.png" alt="Размышления и лорбук" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[14]</span>
+                                        <h3 class="caption-title">Размышления и получение описания</h3>
+                                        <p class="caption-desc">1. Thinking -размышление по пунктам. Включать для всех поддерживающих СоТ моделей (Gemini, Claude). Отключать для GPT<br>
+                                        2. Ниже во вкладке LOREBOOK находится всё описания бота, персоны, лорбука, истории чата. Эти промпты не трогать
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img15">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/15.png" alt="Префилл" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[15]</span>
+                                        <h3 class="caption-title">Префилл</h3>
+                                        <p class="caption-desc">Префиллы, обязательно включать только один:<br>
+                                        1. prefill - префилл для всех поддерживающих СоТ моделей<br>
+                                        2. prefill no CoT - префилл для GPT. Основа префилла взята из Яблочного пресета (https://kykaaj.github.io/yablochny/)
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="guide-item" id="img16">
+                                    <div class="guide-image-wrapper">
+                                        <img src="assets/16.png" alt="Настройки для GPT" class="guide-image" onclick="openFullscreen(this)">
+                                        <div class="image-overlay">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </div>
+                                    </div>
+                                    <div class="guide-caption">
+                                        <span class="caption-number">[16]</span>
+                                        <h3 class="caption-title">Настройки для GPT</h3>
+                                        <p class="caption-desc">Изначально пресет выставлен под думающие моделию. Для GPT 5.4 включить следующие настройки:<br>
+                                        1. (gpt)no positive bias<br>
+                                        2. general ruules (no CoT)<br>
+                                        3. отключить Thinking<br>
+                                        4. включить prefill no CoT и отключить обычный prefill
+                                        </p>
                                     </div>
                                 </div>
                             </div>
