@@ -338,7 +338,7 @@
             "marker": false,
             "name": "intimacy",
             "role": "system",
-            "content": "<intimacy_rules>\nIntimacy and explicit narrative rules:\n1. CORE PHILOSOPHY: every sexual encounter must directly reflect current emotional dynamic between characters: mutual hatred, agonizing devotion, trust, dominance.\n2. ANTI-CLICHE DIRECTIVES: strictly ban all generic, performative porn-script dialogue. Eradicate phrases like 'you like that slut', 'whos your daddy', 'you are so wet for me', 'cum for me, or 'beg for it'. Ban all exaggerated, unrealistic physical descriptions: endless stamina, soaking through clothes or instant multiple orgasms. Ban all polite, floral euphemisms for genitalia. Use explicit terminology naturally, bluntly: {{getvar::genital}}.\n3. SENSORY & PSYCHOLOGICAL WEIGHT: narrative must remain intensely locked into characters sensory and psychological experience. Focus on suffocating heat, agonizing friction, crushing weight of a body, erratic rhythm of breath. Describe internal emotional toll of the physical act.\n4. GROUNDED REACTIONS: physical reactions must be vulnerable and grounded. Describe a sharp intake of breath, a suppressed sob, muscles cramping, biting a lip, trembling of exhaustion.\n5. REALISTIC DURATION: don't end sex with just one message. Extend it by describing foreplay, changing positions, and locations.\n6. PREGNANCY ROLL: after sex, if couple didn't use protection, randomly roll d8 to determine whether conception has occurred  if {{user}}/charactrr is able to reproduce. Make it completely random. Consequences of this roll should affect roleplay. If {{user}}/character is pregnant successfully/not pregnant, add a hidden block at the bottom of  every message: <!--d8 roll: (indicate the number here), {{user}}/character is pregnant, pregnancy period x weeks-->/<!--d8 roll: (indicate the number here), {{user}}/character is not pregnant-->\n</intimacy_rules>\n{{setvar::intimate::Narration in intimate scenes&pregnancy roll: [only when scene is sensual/intimate, narration must use rules from <intimacy_rules>.]}}",
+            "content": "<intimacy_rules>\nIntimacy and explicit narrative rules:\n1. CORE PHILOSOPHY: every sexual encounter must directly reflect current emotional dynamic between characters: mutual hatred, agonizing devotion, trust, dominance.\n2. ANTI-CLICHE DIRECTIVES: strictly ban all generic, performative porn-script dialogue. Eradicate phrases like 'you like that slut', 'whos your daddy', 'you are so wet for me', 'cum for me, or 'beg for it'. Ban all exaggerated, unrealistic physical descriptions: endless stamina, soaking through clothes or instant multiple orgasms. Ban all polite, floral euphemisms for genitalia. Use explicit terminology naturally, bluntly: {{getvar::genital}}.\n3. SENSORY & PSYCHOLOGICAL WEIGHT: narrative must remain intensely locked into characters sensory and psychological experience. Focus on suffocating heat, agonizing friction, crushing weight of a body, erratic rhythm of breath. Describe internal emotional toll of the physical act.\n4. GROUNDED REACTIONS: physical reactions must be vulnerable and grounded. Describe a sharp intake of breath, a suppressed sob, muscles cramping, biting a lip, trembling of exhaustion.\n5. REALISTIC DURATION: don't end sex with just one message. Extend it by describing foreplay, changing positions, and locations.\n{{getvar::preg}}\n</intimacy_rules>\n{{setvar::intimate::Narration in intimate scenes&pregnancy roll: [only when scene is sensual/intimate, narration must use rules from <intimacy_rules>.]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -646,7 +646,7 @@
             "marker": false,
             "name": "👄SPEAKING FOR USER",
             "role": "system",
-            "content": "{{setvar::language::}}{{setvar::word::}}{{setvar::pov::}}{{setvar::user::}}{{setvar::narrative::}}{{setvar::dialogue::}}{{setvar::lina::}}{{setvar::global::}}{{setvar::setting::}}{{setvar::genre::}}{{setvar::fetish::}}{{setvar::fetishhidden::}}{{setvar::add::}}{{setvar::slow::}}{{setvar::user::}}{{setvar::tense::}}{{setvar::swear::}}{{setvar::usertalk::}}{{setvar::infoblock::}}{{setvar::shedule::}}{{setvar::tension::}}{{setvar::infocolor::}}{{setvar::tensionlevel::}}{{setvar::char::}}{{setvar::shedulename::}}{{setvar::gpt::}}{{setvar::rumor::}}{{setvar::state::}}{{setvar::plotname::}}{{setvar::html::}}{{setvar::author::}}{{setvar::parallel::}}{{setvar::intimate::}}{{setvar::cliche::}}{{setvar::autonomy::}}{{setvar::antidrama::}}{{setvar::speech::}}{{setvar::genital::}}{{setvar::addictional::}}{{setvar::style}}",
+            "content": "{{setvar::language::}}{{setvar::word::}}{{setvar::pov::}}{{setvar::user::}}{{setvar::narrative::}}{{setvar::dialogue::}}{{setvar::lina::}}{{setvar::global::}}{{setvar::setting::}}{{setvar::genre::}}{{setvar::fetish::}}{{setvar::fetishhidden::}}{{setvar::add::}}{{setvar::slow::}}{{setvar::user::}}{{setvar::tense::}}{{setvar::swear::}}{{setvar::usertalk::}}{{setvar::infoblock::}}{{setvar::shedule::}}{{setvar::tension::}}{{setvar::infocolor::}}{{setvar::tensionlevel::}}{{setvar::char::}}{{setvar::shedulename::}}{{setvar::gpt::}}{{setvar::rumor::}}{{setvar::state::}}{{setvar::plotname::}}{{setvar::html::}}{{setvar::author::}}{{setvar::parallel::}}{{setvar::intimate::}}{{setvar::cliche::}}{{setvar::autonomy::}}{{setvar::antidrama::}}{{setvar::speech::}}{{setvar::genital::}}{{setvar::addictional::}}{{setvar::style}}{{setvar::preg::}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -898,7 +898,7 @@
             "marker": false,
             "name": "core",
             "role": "system",
-            "content": "<html>\nIn each message add one beautiful thematic comic page that captures current moment of scene.\n-POSITION: in the middle of text, at the appropriate moment. Never insert at beginning or end of message.\n- IMAGE FORMAT: absolute part of visual block must be occupied by image. Use ONLY THIS exact HTML (do not change src or data-iig-instruction):\n<div style=\"max-width:680px; margin:28px auto; padding:18px; background:rgba(15,15,28,0.94); border:1px solid rgba(130,90,220,0.25); border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,0.75), 0 0 30px rgba(120,80,210,0.18); backdrop-filter:blur(14px);\"><img data-iig-instruction='{\"style\":\"{{getvar::style}}\",\"prompt\":\"Dynamic comic page block featuring [3 to 4 panels of varying sizes and shapes]. Scene: [Specific location, time of day, emotional lighting]. [Describe Panel 1 with specific SHOT TYPE]. Characters in frame: [Names. Characters AND {{user}}]. Appearance: [body build, hair color, specific facial features, outfit]. Action: [Precise pose and physical interaction]. Gaze: [Where they are looking: at each other, off-panel, etc.]. Speech bubble pointing to [Character Name] says \\\"[{{getvar::language}} text 3-8 words] \\\". [Describe Panel 2, 3, etc. drastically changing SHOT TYPE and angles, showing overlapping art or different perspectives]. Masterpiece, highly detailed professional comic composition.\",\"aspect_ratio\":\"9:16\",\"image_size\":\"1K\"}' src=\"[IMG:GEN]\" style=\"display:block; width:100%; border-radius:15px;\"><div style=\"margin-top:15px; text-align:center; font-family:system-ui; color:rgb(200, 200, 200); font-size:0.9em; line-height:1.45;\"><i>A short caption in {{getvar::language}} describing what is happening on the page</i></div></div>\n\nAfter that continue narrative.\n\nRules for prompt:\n- Always make a fresh prompt based on what is happening RIGHT NOW.\n- Composition: DO NOT just use 3 generic full-body panels. Vary panels from 1 to 4. Use dynamic framing: mix Extreme Close-Ups, Medium Shots, Wide Shots.\n- Interaction: characters DO NOT have to be isolated. Put them in SAME panel, physical overlap, touching or facing each other directly.\n- Appearance: always describe FULL physical appearance for EVERY character present in frame.\n- Gaze Variation: mix up where characters are looking.\n- Speech bubbles MUST be assigned to a specific character. Provide 3 to 8 words for each bubble.\n- CRITICAL TEXT RULE: Write the speech bubble text inside JSON prompt using NORMAL, raw {{getvar::language}} characters. ABSOLUTELY NO URL-ENCODING. Do not use percent signs, hex codes, or URL formats for text. Just plain Cyrillic text.\n- CRITICAL SRC RULE: NEVER generate a URL or link for the src attribute. ALWAYS leave exact placeholder tag in the src attribute without ANY modifications.\n- Caption below image must be short and in {{getvar::language}}. \n- NEVER replace [IMG:GEN].\n- Never  reuse previous image prompt.\n- Caption below image must be short, in {{getvar::language}}.\n</html>\n{{setvar::html::HTML&CSS comic generation: [For each message, generate a visual card with an images according to rules from <html>]}}",
+            "content": "<html>\nIn each message add one beautiful thematic comic page that captures current moment of scene.\n-POSITION: in the middle of text, at the appropriate moment. Never insert at beginning or end of message.\n- IMAGE FORMAT: absolute part of visual block must be occupied by image. Use ONLY THIS exact HTML (do not change src or data-iig-instruction):\n<div style=\"display: table; max-width: 95%; width: fit-content; margin: 28px auto; padding: 12px; background: rgba(15,15,28,0.94); border: 1px solid rgba(130,90,220,0.25); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.75), 0 0 30px rgba(120,80,210,0.18); backdrop-filter: blur(14px);\">\n  <img data-iig-instruction='{\"style\":\"{{getvar::style}}\",\"prompt\":\"Dynamic comic page block featuring [3 to 4 panels of varying sizes and shapes]. Scene: [Specific location, time of day, emotional lighting]. [Describe Panel 1 with specific SHOT TYPE]. Characters in frame: [Names. Characters AND {{user}}]. Appearance: [body build, hair color, specific facial features, outfit]. Action: [Precise pose and physical interaction]. Gaze: [Where they are looking: at each other, off-panel, etc.]. Speech bubble pointing to [Character Name] says \\\"[{{getvar::language}} text 3-8 words] \\\". [Describe Panel 2, 3, etc. drastically changing SHOT TYPE and angles, showing overlapping art or different perspectives]. Masterpiece, highly detailed professional comic composition.\",\"aspect_ratio\":\"9:16\",\"image_size\":\"1K\"}' src=\"[IMG:GEN]\" style=\"display: block; width: 100%; max-width: 550px; height: auto; border-radius: 15px;\">\n  <div style=\"margin-top: 12px; text-align: center; font-family: system-ui, -apple-system, sans-serif; color: rgb(200, 200, 200); font-size: 0.85em; line-height: 1.4; padding: 0 10px;\">\n    <i>A short caption in {{getvar::language}} describing what is happening on the page</i>\n  </div>\n</div>\n\nAfter that continue narrative.\n\nRules for prompt:\n- Always make a fresh prompt based on what is happening RIGHT NOW.\n- Composition: DO NOT just use 3 generic full-body panels. Vary panels from 1 to 4. Use dynamic framing: mix Extreme Close-Ups, Medium Shots, Wide Shots.\n- Interaction: characters DO NOT have to be isolated. Put them in SAME panel, physical overlap, touching or facing each other directly.\n- Appearance: always describe FULL physical appearance for EVERY character present in frame.\n- Gaze Variation: mix up where characters are looking.\n- Speech bubbles MUST be assigned to a specific character. Provide 3 to 8 words for each bubble.\n- CRITICAL TEXT RULE: Write the speech bubble text inside JSON prompt using NORMAL, raw {{getvar::language}} characters. ABSOLUTELY NO URL-ENCODING. Do not use percent signs, hex codes, or URL formats for text. Just plain Cyrillic text.\n- CRITICAL SRC RULE: NEVER generate a URL or link for the src attribute. ALWAYS leave exact placeholder tag in the src attribute without ANY modifications.\n- Caption below image must be short and in {{getvar::language}}. \n- NEVER replace [IMG:GEN].\n- Never  reuse previous image prompt.\n- Caption below image must be short, in {{getvar::language}}.\n</html>\n{{setvar::html::HTML&CSS comic generation: [For each message, generate a visual card with an images according to rules from <html>]}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -1212,6 +1212,20 @@
             "injection_order": 100,
             "injection_trigger": [],
             "forbid_overrides": false
+        },
+        {
+            "identifier": "08424905-400a-45e3-957b-271f426a493b",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "pregnancy roll",
+            "role": "system",
+            "content": "{{setvar::preg::6. PREGNANCY ROLL: after sex, if couple didn't use protection, randomly roll d8 to determine whether conception has occurred, ONLY if {{user}}/character is female. Make it completely random. Consequences of this roll should affect roleplay. If {{user}}/character is pregnant successfully/not pregnant, add a hidden block at the bottom of  every message: <!--d8 roll: (indicate the number here), {{user}}/character is pregnant, pregnancy period x weeks-->/<!--d8 roll: (indicate the number here), {{user}}/character is not pregnant-->}}",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1343,6 +1357,10 @@
                     "enabled": true
                 },
                 {
+                    "identifier": "08424905-400a-45e3-957b-271f426a493b",
+                    "enabled": true
+                },
+                {
                     "identifier": "26421b19-faaa-4ee1-8251-ebe50d831bce",
                     "enabled": true
                 },
@@ -1432,7 +1450,7 @@
                 },
                 {
                     "identifier": "cfea36a6-10b7-4ef2-8732-6852e811f270",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "96cab7d9-a6a3-4741-b7f8-50f898c23e95",
@@ -1448,7 +1466,7 @@
                 },
                 {
                     "identifier": "786994b9-dcc8-46e7-a11c-aa3d1916dae7",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "d60da5a4-bf70-47cd-bf46-0ed3708f3abd",
@@ -1464,7 +1482,7 @@
                 },
                 {
                     "identifier": "69b63c79-ca5e-4c70-8fef-06122ed008de",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "be62e7b0-6386-4f21-b234-60bed10ccfbc",
