@@ -1220,7 +1220,7 @@
             "marker": false,
             "name": "pregnancy roll",
             "role": "system",
-            "content": "{{setvar::preg::6. PREGNANCY ROLL: after sex, if couple didn't use protection, randomly roll d8 to determine whether conception has occurred, ONLY if {{user}}/character is female. Make it completely random. Consequences of this roll should affect roleplay. If {{user}}/character is pregnant successfully/not pregnant, add a hidden block at the bottom of  every message: <!--d8 roll: (indicate the number here), {{user}}/character is pregnant, pregnancy period x weeks-->/<!--d8 roll: (indicate the number here), {{user}}/character is not pregnant-->}}",
+            "content": "{{setvar::preg::6. PREGNANCY ROLL: after sex, if couple didn't use protection, randomly roll d8 to determine whether conception has occurred, ONLY if {{user}}/character is female. Make it completely random. Consequences of this roll should affect roleplay. If {{user}}/character is pregnant successfully/not pregnant, add a hidden block at the bottom of  every message: <!--d8 roll: (indicate the number here), (character's name or {{user}}) is pregnant, pregnancy period x weeks-->}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
