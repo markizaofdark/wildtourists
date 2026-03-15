@@ -81,7 +81,7 @@ const logMessages = [
     "Баню двачеров в чате",
     "Ах, Джину...", "You know I'm the only one who'll love your sins...",
     "I'll be уour idol...", "feel the way my voice gets underneath your skin...",
-    "Облизываю яблоко🍎", "Ах, вайбкодинг...", "Кусаю Астеру за ухо", "Рекламирую NAI Labs"
+    "Облизываю яблоко🍎", "Ах, вайбкодинг...", "Кусаю Астеру за ухо", "Рекламирую NAI Labs", "Глажу Шиночку", "Пизжу промпты у Шино"
 ];
 
 function addLogEntry(text) {
