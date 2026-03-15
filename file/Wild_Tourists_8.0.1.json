@@ -1258,7 +1258,7 @@
                 },
                 {
                     "identifier": "89b784de-01b4-4e90-8171-ec53254e9e2a",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "worldInfoAfter",
